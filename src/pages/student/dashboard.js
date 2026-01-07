@@ -1,7 +1,3 @@
-export default function StudentDashboard() {
-  return (
-    <div>
-      Student Dashboard
-    </div>
-  );
+export default function Page() {
+  return <h1>Student Page</h1>;
 }

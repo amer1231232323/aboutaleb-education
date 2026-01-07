@@ -1,47 +1,56 @@
 import Link from "next/link";
-import { FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function Header() {
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
+
+  const isActive = (path) => router.pathname === path;
+
   return (
     <header className="header">
       <div className="container header-content">
+
         {/* LOGO */}
         <Link href="/" className="logo">
           ABOU <span>TALEB</span>
         </Link>
 
         {/* NAV */}
-        <nav className="nav">
-          <Link href="/">الرئيسية</Link>
-          <Link href="/universities">الجامعات</Link>
-          <Link href="/contact">تواصل معنا</Link>
-        </nav>
+        <nav className={`nav ${open ? "open" : ""}`}>
+          <Link href="/" className={isActive("/") ? "active" : ""}>
+            الرئيسية
+          </Link>
 
-        {/* SOCIAL */}
-        <div className="social">
+          <Link
+            href="/universities"
+            className={isActive("/universities") ? "active" : ""}
+          >
+            الجامعات
+          </Link>
+
+          <Link
+            href="/contact"
+            className={isActive("/contact") ? "active" : ""}
+          >
+            تواصل معنا
+          </Link>
+
           <a
             href="https://wa.me/201000000000"
             target="_blank"
-            aria-label="WhatsApp"
+            className="btn whatsapp small"
           >
-            <FaWhatsapp />
+            واتساب
           </a>
+        </nav>
 
-          <a
-            href="https://instagram.com/"
-            target="_blank"
-            aria-label="Instagram"
-          >
-            <FaInstagram />
-          </a>
-
-          <a
-            href="https://facebook.com/"
-            target="_blank"
-            aria-label="Facebook"
-          >
-            <FaFacebook />
-          </a>
+        {/* BURGER */}
+        <div className="burger" onClick={() => setOpen(!open)}>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </div>
     </header>

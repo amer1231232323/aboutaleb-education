@@ -1,0 +1,60 @@
+.header {
+  background: #0b5cd5;
+  color: #fff;
+  padding: 15px 0;
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header nav a {
+  margin-left: 15px;
+  color: #fff;
+}
+
+.hero {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn {
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.btn.primary {
+  background: #0b5cd5;
+  color: #fff;
+}
+
+.btn.secondary {
+  border: 2px solid #0b5cd5;
+  color: #0b5cd5;
+}
+
+.footer {
+  background: #111827;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}

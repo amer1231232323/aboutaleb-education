@@ -1,96 +1,86 @@
-import Head from "next/head";
-import { useRouter } from "next/router";
 import Link from "next/link";
-import universities from "@/data/universities";
 
 export default function UniversityDetails() {
-  const router = useRouter();
-  const { id } = router.query;
-
-  if (!id) return null;
-
-  const university =
-    universities.find((u) => u.id === id) || {
-      name: "جامعة غير معروفة",
-      city: "تركيا",
-      about: "سيتم إضافة التفاصيل قريبًا.",
-    };
-
   return (
     <>
-      <Head>
-        <title>{university.name} | ABOU TALEB</title>
-      </Head>
-
-      <section className="university-details">
+      {/* UNIVERSITY HERO */}
+      <section className="university-hero">
         <div className="container">
+          <h1>جامعة خاصة رقم 2</h1>
+          <p>إسطنبول – تركيا</p>
 
-          {/* ===== TOP LAYOUT ===== */}
-          <div className="university-top">
+          <Link href="/student/register" className="btn primary">
+            قدّم الآن
+          </Link>
+        </div>
+      </section>
 
-            {/* LOGO (LEFT + STICKY) */}
-            <div className="university-logo">
-              <img
-                src="/images/universities/default-logo.png"
-                alt={university.name}
-              />
-            </div>
-
-            {/* MAIN CONTENT (CENTER) */}
-            <div className="university-main">
-              <h1>{university.name}</h1>
-              <p className="city">{university.city}</p>
-
-              <a
-                href="https://wa.me/905457886024"
-                target="_blank"
-                rel="noreferrer"
-                className="btn primary"
-              >
-                قدّم الآن
-              </a>
-
-              {/* ABOUT – يظهر فوق */}
-              <div className="about-top">
-                <h2>نبذة عن الجامعة</h2>
-                <p>{university.about}</p>
-              </div>
-
-              {/* PDF FILE */}
-              <div className="university-section">
-                <h2>ملف التخصصات والرسوم</h2>
-                <a
-                  href="https://www.mediafire.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn primary"
-                >
-                  تحميل الملف PDF
-                </a>
-              </div>
-
-              {/* CTA */}
-              <div className="university-cta">
-                <p>للحصول على التفاصيل الكاملة والتقديم:</p>
-                <a
-                  href="https://wa.me/905457886024"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn whatsapp"
-                >
-                  تواصل معنا عبر واتساب
-                </a>
-              </div>
-
-              {/* BACK */}
-              <div className="back-link">
-                <Link href="/universities">← العودة إلى الجامعات</Link>
-              </div>
-              </div>
-            </div>
-  
+      {/* UNIVERSITY INFO */}
+      <section className="university-info">
+        <div className="container info-grid">
+          <div className="info-card">
+            <h4>لغة الدراسة</h4>
+            <p>الإنجليزية / التركية</p>
           </div>
-        </section>
-      </>
-    );
-  }
+
+          <div className="info-card">
+            <h4>الرسوم</h4>
+            <p>من 2500$ سنويًا</p>
+          </div>
+
+          <div className="info-card">
+            <h4>نوع الجامعة</h4>
+            <p>خاصة</p>
+          </div>
+
+          <div className="info-card">
+            <h4>الاعتماد</h4>
+            <p>معترف بها</p>
+          </div>
+        </div>
+      </section>
+
+      {/* DESCRIPTION */}
+      <section className="university-description">
+        <div className="container">
+          <h2 className="section-title">عن الجامعة</h2>
+          <p>
+            جامعة خاصة متميزة في تركيا، تقدم برامج تعليمية قوية
+            وبيئة دراسية حديثة مع اعتراف دولي.
+          </p>
+        </div>
+      </section>
+
+      {/* MAJORS */}
+      <section className="university-majors">
+        <div className="container">
+          <h2 className="section-title">التخصصات المتاحة</h2>
+
+          <div className="majors-grid">
+            <div className="major-card">هندسة</div>
+            <div className="major-card">إدارة أعمال</div>
+            <div className="major-card">طب</div>
+            <div className="major-card">صيدلة</div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="cta">
+        <div className="container">
+          <h2>جاهز تبدأ؟</h2>
+          <p>سيب الباقي علينا</p>
+
+          <a
+            href="https://wa.me/201000000000"
+            target="_blank"
+            rel="noreferrer"
+            className="btn whatsapp"
+          >
+            تواصل واتساب
+          </a>
+        </div>
+      </section>
+    </>
+  );
+}

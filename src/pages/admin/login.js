@@ -1,7 +1,3 @@
-export default function AdminLogin() {
-  return (
-    <div>
-      Admin Login Page
-    </div>
-  );
+export default function Page() {
+  return <h1>Admin Page</h1>;
 }

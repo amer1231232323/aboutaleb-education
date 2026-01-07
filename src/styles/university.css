@@ -1,0 +1,33 @@
+.university-details {
+  padding: 90px 20px;
+}
+
+.university-top {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 40px;
+}
+
+.university-logo {
+  position: sticky;
+  top: 120px;
+}
+
+.university-logo img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.university-main h1 {
+  font-size: 32px;
+}
+
+.about-top {
+  margin-top: 40px;
+  text-align: right;
+}
+
+.university-cta {
+  margin-top: 40px;
+  text-align: center;
+}
