@@ -1,8 +1,9 @@
+import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="container footer-grid">
-        
+
         <div className="footer-col">
           <h3>ABOU TALEB</h3>
           <p>
@@ -14,21 +15,21 @@ export default function Footer() {
         <div className="footer-col">
           <h4>روابط سريعة</h4>
           <ul>
-            <li><a href="/">الرئيسية</a></li>
-            <li><a href="/universities">الجامعات</a></li>
-            <li><a href="/contact">تواصل معنا</a></li>
+            <li><Link href="/">الرئيسية</Link></li>
+            <li><Link href="/universities">الجامعات</Link></li>
+            <li><Link href="/contact">تواصل معنا</Link></li>
           </ul>
         </div>
 
         <div className="footer-col">
           <h4>تواصل معنا</h4>
-          <p>واتساب: +20 100 000 0000</p>
+          <p>واتساب  905015959880</p>
           <p>info@aboutaleb.com</p>
         </div>
       </div>
 
       <div className="footer-bottom">
-        © {new Date().getFullYear()} ABOU TALEB – جميع الحقوق محفوظة
+        © {new Date().getFullYear()} ABOU TALEB –  تصميم محمد عامر تواصل 01096125379 جميع الحقوق محفوظة
       </div>
     </footer>
   );

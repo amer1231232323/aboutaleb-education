@@ -12,10 +12,21 @@ export default function AdminUniversities() {
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+  async function fetchUniversities() {
+    try {
+      const res = await fetch("/api/admin/universities");
+      const result = await res.json();
 
-  const addUniversity = async (e) => {
+      setUniversities(result);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  fetchUniversities();
+}, []); // 👈 فاضية
+
+  async function addUniversity(e) {
     e.preventDefault();
 
     await fetch("/api/admin/universities", {
@@ -27,7 +38,7 @@ export default function AdminUniversities() {
     setName("");
     setCity("");
     fetchData();
-  };
+  }
 
   const deleteUniversity = async (id) => {
     await fetch(`/api/admin/universities/${id}`, {

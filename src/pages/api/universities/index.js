@@ -5,20 +5,18 @@ export default async function handler(req, res) {
   await connectDB();
 
   if (req.method === "GET") {
-    const universities = await University.find().sort({ createdAt: -1 });
+    const universities = await University.find({});
     return res.status(200).json(universities);
   }
 
   if (req.method === "POST") {
-    const { name, city, description, image } = req.body;
-
-    if (!name || !city) {
-      return res.status(400).json({ message: "الاسم والمدينة مطلوبين" });
-    }
+    const { name, city, type, website, description, image } = req.body;
 
     const uni = await University.create({
       name,
       city,
+      type,
+      website,
       description,
       image,
     });
@@ -26,5 +24,5 @@ export default async function handler(req, res) {
     return res.status(201).json(uni);
   }
 
-  return res.status(405).json({ message: "Method not allowed" });
+  res.status(405).json({ message: "Method not allowed" });
 }

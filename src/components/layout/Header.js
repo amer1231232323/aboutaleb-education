@@ -38,7 +38,7 @@ export default function Header() {
           </Link>
 
           <a
-            href="https://wa.me/201000000000"
+            href="https://wa.me/905015959880"
             target="_blank"
             className="btn whatsapp small"
           >

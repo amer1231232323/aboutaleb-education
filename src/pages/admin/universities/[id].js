@@ -1,9 +1,16 @@
-import { connectDB } from "@/lib/db";
+import connectDB from "@/lib/db";
 import University from "@/models/University";
 
 export default async function handler(req, res) {
   await connectDB();
   const { id } = req.query;
+
+  if (req.method === "PUT") {
+    const updated = await University.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+    return res.status(200).json(updated);
+  }
 
   if (req.method === "DELETE") {
     await University.findByIdAndDelete(id);
@@ -11,15 +18,4 @@ export default async function handler(req, res) {
   }
 
   res.status(405).json({ message: "Method not allowed" });
-}
-if (req.method === "PUT") {
-  const { name, city, type, website, description, image } = req.body;
-
-  const updated = await University.findByIdAndUpdate(
-    id,
-    { name, city, type, website, description, image },
-    { new: true }
-  );
-
-  return res.status(200).json(updated);
 }
