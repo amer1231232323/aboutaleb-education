@@ -1,4 +1,4 @@
-import connectDB from "@/lib/db";
+import { connectDB } from "@/lib/db";
 import University from "@/models/University";
 
 export default async function handler(req, res) {
