@@ -43,6 +43,7 @@ export default async function handler(req, res) {
         email: user.email,
         role: user.role,
       },
+      redirectUrl: user.role === "admin" ? "/admin/dashboard" : "/student/dashboard",
     });
   } catch (error) {
     res.status(500).json({ message: "خطأ في السيرفر" });

@@ -1,7 +1,16 @@
-import { connectDB } from "../../../../lib/db";
-import University from "../../../../models/University";
+import { connectDB } from "@/lib/db";
+import University from "@/models/University";
+import { verifyAdminToken } from "@/lib/adminAuthCheck";
 
 export default async function handler(req, res) {
+  // Verify admin authentication
+  const token = req.headers.authorization?.split(" ")[1];
+  const admin = verifyAdminToken(token);
+
+  if (!admin) {
+    return res.status(403).json({ message: "Unauthorized - Admin access required" });
+  }
+
   await connectDB();
   const { id } = req.query;
 

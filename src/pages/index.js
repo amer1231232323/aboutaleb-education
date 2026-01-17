@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FaGlobe, FaMoneyBillWave, FaGraduationCap, FaShieldAlt } from "react-icons/fa";
 
 export default function Home() {
   return (
@@ -23,14 +24,14 @@ export default function Home() {
                 استعرض الجامعات
               </Link>
 
-              <Link href="/student/register" className="btn secondary">
-                سجّل الآن
+              <Link href="/contact" className="btn secondary">
+                تواصل معنا
               </Link>
             </div>
           </div>
 
           <div className="hero-image">
-            <img src="/images/hero.jpg" alt="الدراسة في تركيا" />
+            <div className="hero-placeholder">Hero Image Placeholder</div>
           </div>
         </div>
       </section>
@@ -106,21 +107,25 @@ export default function Home() {
 
           <div className="why-grid">
             <div className="why-card">
+              <FaGlobe className="why-icon" />
               <h3>جامعات معترف بها</h3>
               <p>الجامعات التركية معترف بها دوليًا</p>
             </div>
 
             <div className="why-card">
+              <FaMoneyBillWave className="why-icon" />
               <h3>تكلفة مناسبة</h3>
               <p>مصاريف أقل مقارنة بأوروبا</p>
             </div>
 
             <div className="why-card">
+              <FaGraduationCap className="why-icon" />
               <h3>تعليم قوي</h3>
               <p>مناهج حديثة وتطبيق عملي</p>
             </div>
 
             <div className="why-card">
+              <FaShieldAlt className="why-icon" />
               <h3>بيئة آمنة</h3>
               <p>بلد مناسب للطلاب العرب</p>
             </div>
@@ -128,14 +133,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* UNIVERSITIES PREVIEW */}
-      <section className="universities-preview">
+      {/* FEATURED UNIVERSITIES */}
+      <section className="featured-universities">
         <div className="container">
-          <h2 className="section-title">أشهر الجامعات الخاصة</h2>
+          <h2 className="section-title">جامعات مميزة</h2>
 
           <div className="universities-grid">
             <div className="university-card">
-              <img src="/images/universities/u1.png" alt="جامعة" />
+              <div className="university-placeholder">University Image 1</div>
               <h3>جامعة خاصة</h3>
               <Link href="/universities" className="btn small primary">
                 التفاصيل
@@ -143,19 +148,62 @@ export default function Home() {
             </div>
 
             <div className="university-card">
-              <img src="/images/universities/u2.png" alt="جامعة" />
+              <div className="university-placeholder">University Image 2</div>
               <h3>جامعة خاصة</h3>
               <Link href="/universities" className="btn small primary">
                 التفاصيل
               </Link>
             </div>
+          </div>
 
-            <div className="university-card">
-              <img src="/images/universities/default.png" alt="جامعة" />
-              <h3>جامعة خاصة</h3>
-              <Link href="/universities" className="btn small primary">
-                التفاصيل
-              </Link>
+          <div className="universities-cta">
+            <Link href="/universities" className="btn primary">
+              عرض جميع الجامعات
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* OUR SERVICES */}
+      <section className="our-services">
+        <div className="container">
+          <h2 className="section-title">خدماتنا</h2>
+
+          <div className="services-grid">
+            <div className="service-card">
+              <div className="service-icon-placeholder">Icon 1</div>
+              <h3>استشارة مجانية</h3>
+              <p>نقدم استشارة مجانية لمساعدتك في اختيار الجامعة المناسبة</p>
+            </div>
+
+            <div className="service-card">
+              <div className="service-icon-placeholder">Icon 2</div>
+              <h3>تجهيز الأوراق</h3>
+              <p>نساعدك في تجهيز جميع المستندات المطلوبة للتقديم</p>
+            </div>
+
+            <div className="service-card">
+              <div className="service-icon-placeholder">Icon 3</div>
+              <h3>التقديم والمتابعة</h3>
+              <p>نقوم بالتقديم للجامعات ونتابع الطلب حتى صدور القبول</p>
+            </div>
+
+            <div className="service-card">
+              <div className="service-icon-placeholder">Icon 4</div>
+              <h3>متابعة كاملة</h3>
+              <p>نتابع معك خطوة بخطوة من البداية حتى السفر والوصول</p>
+            </div>
+
+            <div className="service-card">
+              <div className="service-icon-placeholder">Icon 5</div>
+              <h3>دعم مستمر</h3>
+              <p>نوفر الدعم المستمر للطلاب أثناء فترة الدراسة</p>
+            </div>
+
+            <div className="service-card">
+              <div className="service-icon-placeholder">Icon 6</div>
+              <h3>شفافية كاملة</h3>
+              <p>نضمن الشفافية التامة في جميع الإجراءات والرسوم</p>
             </div>
           </div>
         </div>

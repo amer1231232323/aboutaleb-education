@@ -1,4 +1,6 @@
-export default function AdminImages() {
+import { withAdminAuth } from "@/lib/withAdminAuth";
+
+function AdminImages() {
   return (
     <div className="admin-dashboard">
       <h1>إدارة الصور</h1>
@@ -6,3 +8,5 @@ export default function AdminImages() {
     </div>
   );
 }
+
+export default withAdminAuth(AdminImages);

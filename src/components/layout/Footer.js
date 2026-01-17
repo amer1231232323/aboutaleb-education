@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+
 export default function Footer() {
   return (
     <footer className="footer">
@@ -25,6 +27,13 @@ export default function Footer() {
           <h4>تواصل معنا</h4>
           <p>واتساب  905015959880</p>
           <p>info@aboutaleb.com</p>
+
+          <div className="social-media">
+            <a href="#" className="social-link"><FaFacebookF /></a>
+            <a href="#" className="social-link"><FaInstagram /></a>
+            <a href="#" className="social-link"><FaTwitter /></a>
+            <a href="#" className="social-link"><FaLinkedinIn /></a>
+          </div>
         </div>
       </div>
 

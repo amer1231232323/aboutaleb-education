@@ -43,12 +43,9 @@ export default function Login() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
-      // ✅ التوجيه حسب الدور
-      if (data.user.role === "admin") {
-        router.push("/admin/dashboard");
-      } else {
-        router.push("/student/dashboard");
-      }
+      // ✅ التوجيه حسب الدور - استخدم redirectUrl من API
+      const redirectUrl = data.redirectUrl || (data.user.role === "admin" ? "/admin/dashboard" : "/student/dashboard");
+      router.push(redirectUrl);
     } catch (err) {
       setError("حصل خطأ غير متوقع");
     } finally {

@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { withAdminAuth } from "@/lib/withAdminAuth";
 
-export default function EditUniversity() {
+function EditUniversity() {
   const router = useRouter();
   const { id } = router.query;
   const [university, setUniversity] = useState(null);
@@ -160,3 +161,5 @@ export default function EditUniversity() {
     </div>
   );
 }
+
+export default withAdminAuth(EditUniversity);

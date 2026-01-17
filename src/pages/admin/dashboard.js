@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
+import { withAdminAuth } from "@/lib/withAdminAuth";
 
-export default function AdminDashboard() {
+function AdminDashboard() {
   const router = useRouter();
 
   return (
@@ -26,3 +27,5 @@ export default function AdminDashboard() {
     </div>
   );
 }
+
+export default withAdminAuth(AdminDashboard);
