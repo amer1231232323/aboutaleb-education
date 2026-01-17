@@ -11,7 +11,11 @@ export default function UniversitiesList() {
   }
 
   useEffect(() => {
-    fetchData();
+    (async () => {
+      const res = await fetch("/api/admin/universities");
+      const data = await res.json();
+      setUniversities(data);
+    })();
   }, []);
 
   async function handleDelete(id) {
