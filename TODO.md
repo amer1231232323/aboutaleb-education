@@ -1,9 +1,15 @@
-# TODO: Fix globals.css
+# TODO List
 
-- [x] Remove duplicate reset sections and consolidate into one at the top
-- [x] Unify CSS variables in :root (remove duplicates and inconsistencies)
-- [x] Consolidate button styles (.btn classes)
-- [x] Organize the file into logical sections: Reset, Variables, Layout, Components, Sections, Responsive
-- [x] Remove redundant responsive media queries and consolidate them
-- [x] Ensure all styles are consistent and non-conflicting
-- [x] Test the file for any syntax errors or missing styles
+## Fix Next.js Build Error
+
+- [x] Convert `src/pages/admin/universities/[id].js` to a React component that fetches data from the API
+- [x] Test the build after changes
+- [x] Verify the component functionality
+
+## Completed Tasks
+
+- Identified the issue: API handler in pages directory causing mongoose to be bundled for browser
+- Converted the page to a proper React component with form for editing universities
+- Added loading, error, and delete functionality
+- Build now compiles successfully without mongoose errors
+- Development server starts successfully
