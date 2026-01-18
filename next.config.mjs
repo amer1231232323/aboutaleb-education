@@ -2,6 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   turbopack: {},
+  allowedDevOrigins: [
+    'localhost',
+    '127.0.0.1',
+    '172.18.224.1',
+  ],
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
