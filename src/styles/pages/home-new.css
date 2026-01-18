@@ -1,5 +1,5 @@
-n/* ============================================
-   HOME PAGE DESIGN
+/* ============================================
+   HOME PAGE DESIGN - NEW
    ============================================ */
 
 /* HERO SECTION */
@@ -9,8 +9,6 @@ n/* ============================================
     min-height: 600px;
     display: flex;
     align-items: center;
-    position: relative;
-    overflow: hidden;
 }
 
 .hero-content {
@@ -257,31 +255,22 @@ n/* ============================================
     margin: 0;
 }
 
-
-/* Responsive Home */
+/* RESPONSIVE */
 @media (max-width: 1024px) {
-    .hero-grid {
+    .hero-content {
         grid-template-columns: 1fr;
-        gap: var(--spacing-32);
+        gap: var(--spacing-40);
     }
 
     .hero-text h1 {
         font-size: 2.5rem;
     }
 
-    .journey-steps {
+    .why-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .universities-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .why-us-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .trust-grid {
+    .services-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -289,43 +278,44 @@ n/* ============================================
 @media (max-width: 768px) {
     .hero {
         padding: var(--spacing-48) var(--spacing-16);
-        min-height: auto;
     }
 
     .hero-text h1 {
         font-size: 2rem;
     }
 
-    .hero-text p {
-        font-size: var(--font-size-base);
+    .hero-image {
+        height: 300px;
     }
 
-    .journey-steps {
+    .why-grid {
         grid-template-columns: 1fr;
-    }
-
-    .journey-steps::before {
-        display: none;
     }
 
     .universities-grid {
         grid-template-columns: 1fr;
     }
 
-    .section-title h2 {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
         font-size: 2rem;
     }
+}
 
-    .cta-section {
-        margin: var(--spacing-32) var(--spacing-16);
-        padding: var(--spacing-32) var(--spacing-16);
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 1.75rem;
     }
 
-    .cta-title {
-        font-size: 2rem;
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
     }
 
-    .cta-text {
-        font-size: var(--font-size-base);
+    .hero-buttons .btn {
+        width: 100%;
     }
 }

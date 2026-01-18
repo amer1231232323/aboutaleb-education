@@ -1,49 +1,81 @@
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import { connectDB } from "@/lib/db";
 import User from "@/models/User";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method not allowed" });
+    return res.status(405).json({
+      success: false,
+      message: "Method not allowed"
+    });
   }
 
-  const { name, email, password } = req.body;
+  const { name, email, password, phone } = req.body;
 
   if (!email || !password) {
-    return res.status(400).json({ message: "البيانات ناقصة" });
+    return res.status(400).json({
+      success: false,
+      message: "Email and password are required"
+    });
+  }
+
+  if (!name) {
+    return res.status(400).json({
+      success: false,
+      message: "Name is required"
+    });
   }
 
   try {
-    // ✅ الاتصال بقاعدة البيانات
     await connectDB();
 
-    // ✅ التأكد إن الإيميل مش مستخدم
+    // Check if email already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({ message: "الإيميل مستخدم بالفعل" });
+      return res.status(400).json({
+        success: false,
+        message: "Email already registered"
+      });
     }
 
-    // ✅ تشفير الباسورد
+    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // ✅ إنشاء المستخدم
+    // Create student user
     const user = await User.create({
       name,
       email,
       password: hashedPassword,
-      role: "user", // 👈 مهم جدًا
+      phone: phone || "",
+      role: "student", // Default role is student
     });
 
+    // Generate JWT token
+    const token = jwt.sign(
+      { userId: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" }
+    );
+
     return res.status(201).json({
-      message: "تم إنشاء الحساب بنجاح",
+      success: true,
+      message: "Account created successfully",
+      token,
       user: {
         id: user._id,
+        name: user.name,
         email: user.email,
+        phone: user.phone,
         role: user.role,
       },
+      redirectUrl: "/student/dashboard",
     });
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: "Server error" });
+    console.error("Registration error:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Server error"
+    });
   }
 }

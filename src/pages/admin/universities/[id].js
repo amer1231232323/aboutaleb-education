@@ -22,7 +22,12 @@ function EditUniversity() {
     if (id) {
       async function fetchUniversity() {
         try {
-          const res = await fetch(`/api/admin/universities/${id}`);
+          const token = localStorage.getItem("token");
+          const res = await fetch(`/api/admin/universities/${id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
           if (!res.ok) throw new Error("Failed to fetch university");
           const data = await res.json();
           setUniversity(data);
@@ -47,9 +52,13 @@ function EditUniversity() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
+      const token = localStorage.getItem("token");
       const res = await fetch(`/api/admin/universities/${id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify(formData),
       });
       if (!res.ok) throw new Error("Failed to update university");
@@ -63,8 +72,12 @@ function EditUniversity() {
   async function handleDelete() {
     if (!confirm("هل تريد حذف الجامعة؟")) return;
     try {
+      const token = localStorage.getItem("token");
       const res = await fetch(`/api/admin/universities/${id}`, {
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       if (!res.ok) throw new Error("Failed to delete university");
       alert("تم الحذف بنجاح");

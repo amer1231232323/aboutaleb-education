@@ -11,11 +11,23 @@ function UniversitiesList() {
 
   async function fetchData() {
     try {
-      const res = await fetch("/api/admin/universities");
+      const token = localStorage.getItem("token");
+      const res = await fetch("/api/admin/universities", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const data = await res.json();
-      setUniversities(data);
+
+      if (res.ok) {
+        setUniversities(data);
+      } else {
+        console.error("Error fetching universities:", data.message);
+        setUniversities([]); // Set to empty array on error
+      }
     } catch (err) {
       console.error("Error fetching universities:", err);
+      setUniversities([]); // Set to empty array on error
     } finally {
       setLoading(false);
     }
@@ -29,8 +41,12 @@ function UniversitiesList() {
     if (!confirm("هل تريد حذف الجامعة؟")) return;
 
     try {
+      const token = localStorage.getItem("token");
       const res = await fetch(`/api/admin/universities/${id}`, {
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       if (res.ok) {

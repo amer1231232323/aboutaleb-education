@@ -8,7 +8,10 @@ const UniversitySchema = new mongoose.Schema({
   website: String,
   description: String,
   image: String,
+  tuition: String,
+  programs: [String],
+  language: String,
 }, { timestamps: true });
 
 export default mongoose.models.University ||
- mongoose.model("University", UniversitySchema);
+  mongoose.model("University", UniversitySchema);

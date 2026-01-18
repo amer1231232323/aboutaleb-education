@@ -7,38 +7,50 @@ export default function Footer() {
       <div className="container footer-grid">
 
         <div className="footer-col">
-          <h3>ABOU TALEB</h3>
+          <h3>ABOU-TALEB EDUCATION</h3>
           <p>
-            منصة متخصصة في تسجيل الطلاب بالجامعات الخاصة في تركيا
-            مع متابعة كاملة من البداية حتى القبول.
+            Private admissions advice can start with
+            Exclusive University Partnerships.
           </p>
         </div>
 
         <div className="footer-col">
-          <h4>روابط سريعة</h4>
+          <h4>Pages</h4>
           <ul>
-            <li><Link href="/">الرئيسية</Link></li>
-            <li><Link href="/universities">الجامعات</Link></li>
-            <li><Link href="/contact">تواصل معنا</Link></li>
+            <li><Link href="/">Home</Link></li>
+            <li><Link href="/universities">Services</Link></li>
+            <li><Link href="/universities">Universities</Link></li>
+            <li><Link href="/contact">Contact</Link></li>
           </ul>
         </div>
 
         <div className="footer-col">
-          <h4>تواصل معنا</h4>
-          <p>واتساب  905015959880</p>
-          <p>info@aboutaleb.com</p>
+          <h4>Services</h4>
+          <ul>
+            <li><Link href="/universities">University Admission</Link></li>
+            <li><Link href="/universities">Document Review</Link></li>
+            <li><Link href="/universities">Visa Guidance</Link></li>
+            <li><Link href="/universities">Residence Permit</Link></li>
+          </ul>
+        </div>
+
+        <div className="footer-col">
+          <h4>Contact</h4>
+          <p>WhatsApp: +90 501 595 9880</p>
+          <p>Email: info@aboutaleb.com</p>
+          <p>Istanbul, Turkey</p>
 
           <div className="social-media">
-            <a href="#" className="social-link"><FaFacebookF /></a>
-            <a href="#" className="social-link"><FaInstagram /></a>
-            <a href="#" className="social-link"><FaTwitter /></a>
-            <a href="#" className="social-link"><FaLinkedinIn /></a>
+            <a href="#" className="social-link" aria-label="Facebook"><FaFacebookF /></a>
+            <a href="#" className="social-link" aria-label="Instagram"><FaInstagram /></a>
+            <a href="#" className="social-link" aria-label="Twitter"><FaTwitter /></a>
+            <a href="#" className="social-link" aria-label="LinkedIn"><FaLinkedinIn /></a>
           </div>
         </div>
       </div>
 
       <div className="footer-bottom">
-        © {new Date().getFullYear()} ABOU TALEB –  تصميم محمد عامر تواصل 01096125379 جميع الحقوق محفوظة
+        © {new Date().getFullYear()} ABOU-TALEB EDUCATION. All rights reserved.
       </div>
     </footer>
   );

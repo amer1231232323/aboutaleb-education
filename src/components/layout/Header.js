@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function Header() {
   const router = useRouter();
@@ -33,77 +34,80 @@ export default function Header() {
 
         {/* LOGO */}
         <Link href="/" className="logo">
-          ABOU <span>TALEB</span>
+          <div className="logo-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="18" stroke="currentColor" strokeWidth="2" />
+              <path d="M20 10L20 30M15 20L25 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </div>
+          <div className="logo-text">
+            <span className="logo-name">ABOU-TALEB</span>
+            <span className="logo-subtitle">EDUCATION</span>
+          </div>
         </Link>
 
         {/* NAV */}
         <nav className={`nav ${open ? "open" : ""}`}>
           <Link href="/" className={isActive("/") ? "active" : ""}>
-            الرئيسية
+            Home
+          </Link>
+
+          <Link
+            href="/services"
+            className={isActive("/services") ? "active" : ""}
+          >
+            Services
           </Link>
 
           <Link
             href="/universities"
             className={isActive("/universities") ? "active" : ""}
           >
-            الجامعات
+            Universities
           </Link>
 
           <Link
             href="/contact"
             className={isActive("/contact") ? "active" : ""}
           >
-            تواصل معنا
+            Contact
           </Link>
+        </nav>
 
+        {/* ACTIONS */}
+        <div className="header-actions">
           {user ? (
             <>
               {user.role === "admin" && (
                 <Link href="/admin/dashboard" className="btn secondary small">
-                  الإدارة
+                  Admin
                 </Link>
               )}
               {user.role !== "admin" && (
                 <Link href="/student/dashboard" className="btn secondary small">
-                  لوحتي
+                  Dashboard
                 </Link>
               )}
               <button
                 onClick={handleLogout}
                 className="btn outline small"
-                style={{ cursor: "pointer", border: "none", background: "transparent" }}
               >
-                خروج
+                Logout
               </button>
             </>
           ) : (
-            <>
-              <Link href="/student/login" className="btn secondary small">
-                دخول
-              </Link>
-              <Link href="/student/register" className="btn primary small">
-                سجل الآن
-              </Link>
-            </>
+            <Link href="/student/register" className="btn primary small">
+              Apply
+            </Link>
           )}
 
-          <a
-            href="https://wa.me/905015959880"
-            target="_blank"
-            rel="noreferrer"
-            className="btn whatsapp small"
-          >
-            واتساب
-          </a>
-
-          {/* Language Switch */}
           <button className="language-switch">
             EN
           </button>
-        </nav>
+        </div>
 
         {/* BURGER */}
-        <div className="burger" onClick={() => setOpen(!open)}>
+        <div className={`burger ${open ? "open" : ""}`} onClick={() => setOpen(!open)}>
           <span></span>
           <span></span>
           <span></span>

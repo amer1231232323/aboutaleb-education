@@ -33,12 +33,11 @@
 /* ============================================
    STEP 5: PAGE-SPECIFIC STYLES
    ============================================ */
-@import './pages/home.css';
+@import './pages/home-new.css';
 @import './pages/universities-page.css';
 @import './pages/dashboard.css';
 @import './pages/forms-auth.css';
 @import './pages/header-footer.css';
-@import './home..css';
 @import './university.css';
 @import './contact.css';
 
@@ -47,39 +46,39 @@
    ============================================ */
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
 }
 
 html {
-  font-size: 16px;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+   font-size: 16px;
+   scroll-behavior: smooth;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: var(--font-family-body, 'Cairo', sans-serif);
-  font-size: var(--font-size-base, 16px);
-  font-weight: var(--font-weight-regular, 400);
-  line-height: var(--line-height-normal, 1.5);
-  color: var(--gray-800, #1f2937);
-  background-color: var(--white, #ffffff);
-  transition: background-color 250ms ease;
+   font-family: var(--font-family-body, 'Cairo', sans-serif);
+   font-size: var(--font-size-base, 16px);
+   font-weight: var(--font-weight-regular, 400);
+   line-height: var(--line-height-normal, 1.5);
+   color: var(--gray-800, #1f2937);
+   background-color: var(--white, #ffffff);
+   transition: background-color 250ms ease;
 }
 
 a {
-  color: var(--primary, #2563eb);
-  text-decoration: none;
-  transition: color 250ms ease;
+   color: var(--primary, #2563eb);
+   text-decoration: none;
+   transition: color 250ms ease;
 }
 
 a:hover {
-  color: var(--primary-dark, #1d4ed8);
+   color: var(--primary-dark, #1d4ed8);
 }
 
 button,
 .btn {
-  transition: all 250ms ease;
+   transition: all 250ms ease;
 }
