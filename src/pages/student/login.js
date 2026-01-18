@@ -34,20 +34,20 @@ export default function Login() {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.message || "بيانات الدخول غير صحيحة");
+        setError(data.message || "Invalid login credentials");
         setLoading(false);
         return;
       }
 
-      // حفظ التوكن واليوزر
+      // Save token and user data
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
-      // ✅ التوجيه حسب الدور - استخدم redirectUrl من API
+      // Redirect based on user role - use redirectUrl from API
       const redirectUrl = data.redirectUrl || (data.user.role === "admin" ? "/admin/dashboard" : "/student/dashboard");
       router.push(redirectUrl);
     } catch (err) {
-      setError("حصل خطأ غير متوقع");
+      setError("An unexpected error occurred");
     } finally {
       setLoading(false);
     }
@@ -56,8 +56,8 @@ export default function Login() {
   return (
     <section className="auth-page">
       <div className="container auth-box">
-        <h1>تسجيل الدخول</h1>
-        <p>ادخل لحسابك وتابع طلبك الجامعي</p>
+        <h1>Login</h1>
+        <p>Access your account and continue your university application</p>
 
         {error && <div className="error">{error}</div>}
 
@@ -65,7 +65,7 @@ export default function Login() {
           <input
             type="email"
             name="email"
-            placeholder="البريد الإلكتروني"
+            placeholder="Email Address"
             value={form.email}
             onChange={handleChange}
             required
@@ -74,20 +74,20 @@ export default function Login() {
           <input
             type="password"
             name="password"
-            placeholder="كلمة المرور"
+            placeholder="Password"
             value={form.password}
             onChange={handleChange}
             required
           />
 
           <button className="btn primary" disabled={loading}>
-            {loading ? "جاري الدخول..." : "تسجيل الدخول"}
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
         <p className="auth-link">
-          مش معاك حساب؟{" "}
-          <Link href="/student/register">إنشاء حساب جديد</Link>
+          Don&apos;t have an account?{" "}
+          <Link href="/student/register">Create New Account</Link>
         </p>
       </div>
     </section>

@@ -67,7 +67,7 @@ export default function ServicesPage() {
                 <div className="services-header">
                     <h1 className="section-title">Our Services</h1>
                     <p className="services-subtitle">
-                        Comprehensive support for your journey to study in Turkey. From admission to graduation, we're here to help every step of the way.
+                        Comprehensive support for your journey to study in Turkey. From admission to graduation, we&apos;re here to help every step of the way.
                     </p>
                 </div>
 
@@ -83,7 +83,7 @@ export default function ServicesPage() {
                                 <p className="service-description">{service.description}</p>
 
                                 <div className="service-features">
-                                    <h4>What's Included:</h4>
+                                    <h4>What&apos;s Included:</h4>
                                     <ul>
                                         {service.features.map((feature, index) => (
                                             <li key={index}>{feature}</li>

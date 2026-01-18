@@ -469,6 +469,7 @@ input[type="radio"] {
 .radio-item label {
     margin-bottom: 0;
     cursor: pointer;
+    -webkit-user-select: none;
     user-select: none;
 }
 

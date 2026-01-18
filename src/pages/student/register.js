@@ -22,9 +22,9 @@ export default function Register() {
     setLoading(true);
     setError("");
 
-    // فحص بسيط قبل الإرسال
+    // Basic validation before submission
     if (!form.email || !form.password) {
-      setError("من فضلك املأ جميع البيانات");
+      setError("Please fill in all required fields");
       setLoading(false);
       return;
     }
@@ -41,19 +41,19 @@ export default function Register() {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.message || "حصل خطأ أثناء إنشاء الحساب");
+        setError(data.message || "An error occurred while creating the account");
         setLoading(false);
         return;
       }
 
       /**
-       * ملاحظة:
-       * الأفضل أمنيًا إن Register ما يعملش Login تلقائي
-       * علشان كده هنحوّل المستخدم على صفحة تسجيل الدخول
+       * Note:
+       * For security reasons, Register should not automatically Login
+       * That's why we redirect the user to the login page
        */
       router.push("/student/login");
     } catch (err) {
-      setError("حصل خطأ غير متوقع");
+      setError("An unexpected error occurred");
     } finally {
       setLoading(false);
     }
@@ -62,8 +62,8 @@ export default function Register() {
   return (
     <section className="auth-page">
       <div className="container auth-box">
-        <h1>إنشاء حساب</h1>
-        <p>سجّل بياناتك وابدأ رحلتك الجامعية</p>
+        <h1>Create Account</h1>
+        <p>Register your details and start your university journey</p>
 
         {error && <div className="error">{error}</div>}
 
@@ -71,7 +71,7 @@ export default function Register() {
           <input
             type="email"
             name="email"
-            placeholder="البريد الإلكتروني"
+            placeholder="Email Address"
             value={form.email}
             onChange={handleChange}
             required
@@ -80,19 +80,19 @@ export default function Register() {
           <input
             type="password"
             name="password"
-            placeholder="كلمة المرور"
+            placeholder="Password"
             value={form.password}
             onChange={handleChange}
             required
           />
 
           <button className="btn primary" disabled={loading}>
-            {loading ? "جاري إنشاء الحساب..." : "إنشاء حساب"}
+            {loading ? "Creating Account..." : "Create Account"}
           </button>
         </form>
 
         <p className="auth-link">
-          معاك حساب؟ <Link href="/student/login">تسجيل الدخول</Link>
+          Already have an account? <Link href="/student/login">Login</Link>
         </p>
       </div>
     </section>
