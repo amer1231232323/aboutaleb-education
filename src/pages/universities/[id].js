@@ -1,12 +1,40 @@
 import Link from "next/link";
+import Image from 'next/image';
+import fs from 'fs';
+import path from 'path';
 
-export default function UniversityDetails() {
+export async function getStaticPaths() {
+  const logoDir = path.join(process.cwd(), 'public', 'logo');
+  const files = fs.readdirSync(logoDir).filter(file => /\.(png|jpg|jpeg)$/i.test(file));
+  const paths = files.map(file => {
+    const name = path.parse(file).name;
+    return { params: { id: name } };
+  });
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const { id } = params;
+  const logoDir = path.join(process.cwd(), 'public', 'logo');
+  const files = fs.readdirSync(logoDir);
+  const file = files.find(f => path.parse(f).name === id);
+  if (!file) {
+    return { notFound: true };
+  }
+  const logo = `/logo/${file}`;
+  const name = id.charAt(0).toUpperCase() + id.slice(1);
+  return { props: { name, logo } };
+}
+
+export default function UniversityDetails({ name, logo }) {
+
   return (
     <>
       {/* UNIVERSITY HERO */}
       <section className="university-hero">
         <div className="container">
-          <h1>جامعة خاصة رقم 2</h1>
+          <h1>{name}</h1>
+          <Image src={logo} alt={name} width={200} height={150} />
           <p>إسطنبول – تركيا</p>
 
           <Link href="/student/register" className="btn primary">
