@@ -14,6 +14,11 @@ function AdminDashboard() {
           <p>إضافة وتعديل الجامعات</p>
         </div>
 
+        <div className="admin-card" onClick={() => router.push("/admin/applications")}>
+          <h3>إدارة الطلبات</h3>
+          <p>عرض وتعديل حالة الطلبات</p>
+        </div>
+
         <div className="admin-card" onClick={() => router.push("/admin/images")}>
           <h3>إدارة الصور</h3>
           <p>التحكم في صور الموقع</p>

@@ -3,11 +3,15 @@
    ============================================ */
 
 .dashboard-container {
-    display: grid;
-    grid-template-columns: 250px 1fr;
-    gap: 0;
     min-height: 100vh;
     background-color: var(--color-gray-50);
+    padding: var(--spacing-16);
+}
+
+@media (min-width: 768px) {
+    .dashboard-container {
+        padding: var(--spacing-24);
+    }
 }
 
 .dashboard-sidebar {
@@ -69,19 +73,22 @@
 }
 
 .dashboard-main {
-    padding: var(--spacing-32);
-    overflow-y: auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    padding: var(--spacing-24);
 }
 
 .dashboard-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--spacing-32);
-    background: var(--color-white);
+    margin-bottom: 0;
     padding: var(--spacing-24);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
+    border-bottom: 1px solid var(--color-gray-200);
 }
 
 .dashboard-title h1 {
@@ -189,11 +196,15 @@
     .dashboard-stats {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .dashboard-main {
+        padding: var(--spacing-20);
+    }
 }
 
 @media (max-width: 768px) {
     .dashboard-container {
-        grid-template-columns: 1fr;
+        padding: var(--spacing-16);
     }
 
     .dashboard-sidebar {
@@ -222,6 +233,7 @@
         flex-direction: column;
         gap: var(--spacing-16);
         align-items: flex-start;
+        padding: var(--spacing-16);
     }
 
     .dashboard-actions {
@@ -230,6 +242,10 @@
 
     .dashboard-actions .btn {
         width: 100%;
+    }
+
+    .student-applications {
+        grid-template-columns: 1fr;
     }
 }
 
