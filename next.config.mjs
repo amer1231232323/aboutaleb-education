@@ -1,13 +1,26 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  turbopack: {},
   allowedDevOrigins: [
     'localhost',
     '127.0.0.1',
     '172.18.224.1',
   ],
+  experimental: {
+    turbo: {
+      resolveAlias: {
+        '@': path.resolve(__dirname, 'src'),
+      },
+    },
+  },
   webpack: (config, { isServer }) => {
+    config.resolve.alias['@'] = path.resolve(__dirname, 'src');
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
