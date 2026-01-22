@@ -115,3 +115,56 @@ body {
    opacity: 1;
    transform: translateY(0);
 }
+
+/* ============================================
+   WHATSAPP FLOATING BUTTON
+   ============================================ */
+
+.whatsapp-float {
+   position: fixed;
+   bottom: 20px;
+   right: 20px;
+   width: 60px;
+   height: 60px;
+   background-color: #25d366;
+   color: white;
+   border: none;
+   border-radius: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+   cursor: pointer;
+   z-index: 1000;
+   transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+   background-color: #20ba5a;
+   transform: scale(1.1);
+   box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-float:active {
+   transform: scale(0.95);
+}
+
+/* RTL support */
+[dir="rtl"] .whatsapp-float {
+   right: auto;
+   left: 20px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+   .whatsapp-float {
+      bottom: 15px;
+      right: 15px;
+      width: 55px;
+      height: 55px;
+   }
+
+   [dir="rtl"] .whatsapp-float {
+      left: 15px;
+   }
+}

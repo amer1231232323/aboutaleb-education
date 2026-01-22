@@ -5,27 +5,27 @@ export default function Contact() {
 
         {/* INFO */}
         <div className="contact-info">
-          <h1>تواصل معنا</h1>
+          <h1>Contact Us</h1>
           <p>
-            فريق <strong>ABOU TALEB</strong> جاهز يرد على كل استفساراتك
-            ويساعدك تبدأ رحلتك الدراسية في تركيا.
+            The <strong>ABOU TALEB</strong> team is ready to answer all your inquiries
+            and help you start your academic journey in Turkey.
           </p>
 
           <ul>
-            <li>📞 واتساب  90 501 595 9880</li>
-            <li>📧 البريد: info@aboutaleb.com</li>
-            <li>📍 تركيا – إسطنبول</li>
+            <li>📞 WhatsApp +90 501 595 9880</li>
+            <li>📧 Email: info@aboutaleb.com</li>
+            <li>📍 Turkey - Istanbul</li>
           </ul>
         </div>
 
         {/* FORM */}
         <form className="contact-form">
-          <input type="text" placeholder="الاسم بالكامل" />
-          <input type="email" placeholder="البريد الإلكتروني" />
-          <input type="tel" placeholder="رقم الهاتف" />
-          <textarea placeholder="اكتب رسالتك هنا"></textarea>
+          <input type="text" placeholder="Full Name" />
+          <input type="email" placeholder="Email Address" />
+          <input type="tel" placeholder="Phone Number" />
+          <textarea placeholder="Write your message here"></textarea>
 
-          <button className="btn primary">إرسال الرسالة</button>
+          <button className="btn primary">Send Message</button>
         </form>
 
       </div>

@@ -23,7 +23,7 @@ export default function UniversitiesPage({ universities }) {
   return (
     <section className="universities">
       <div className="container">
-        <h1 className="section-title">الجامعات الخاصة</h1>
+        <h1 className="section-title">Private Universities</h1>
 
         <div className="universities-grid">
           {universities.map((uni) => (
@@ -34,7 +34,7 @@ export default function UniversitiesPage({ universities }) {
                 href={`/universities/${uni.id}`}
                 className="btn small primary"
               >
-                التفاصيل
+                Details
               </Link>
             </div>
           ))}

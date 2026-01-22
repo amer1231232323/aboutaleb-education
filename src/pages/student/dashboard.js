@@ -80,10 +80,10 @@ export default function StudentDashboard() {
 
   function getStatusText(status) {
     const statusMap = {
-      pending: "قيد الانتظار",
-      accepted: "مقبول",
-      rejected: "مرفوض",
-      missing_documents: "وثائق ناقصة"
+      pending: "Pending",
+      accepted: "Accepted",
+      rejected: "Rejected",
+      missing_documents: "Missing Documents"
     };
     return statusMap[status] || status;
   }
@@ -97,7 +97,7 @@ export default function StudentDashboard() {
       <div className="dashboard-container">
         <div className="dashboard-main">
           <div style={{ textAlign: "center", padding: "60px 20px" }}>
-            <p style={{ fontSize: "18px", color: "#666" }}>جاري التحميل...</p>
+            <p style={{ fontSize: "18px", color: "#666" }}>Loading...</p>
           </div>
         </div>
       </div>
@@ -117,18 +117,18 @@ export default function StudentDashboard() {
         {/* Header */}
         <div className="dashboard-header">
           <div className="dashboard-title">
-            <h1>لوحة تحكم الطالب</h1>
+            <h1>Student Dashboard</h1>
             <p>
-              أهلاً {profile?.name || user.name || user.email}
+              Welcome {profile?.name || user.name || user.email}
               {profile?.email && ` (${profile.email})`}
             </p>
           </div>
           <div className="dashboard-actions">
             <Link href="/universities" className="btn primary">
-              استعرض الجامعات
+              Browse Universities
             </Link>
             <button className="btn error" onClick={handleLogout}>
-              تسجيل خروج
+              Logout
             </button>
           </div>
         </div>
@@ -153,7 +153,7 @@ export default function StudentDashboard() {
             <div className="dashboard-stat-icon" style={{ background: "linear-gradient(135deg, #3b82f6 0%, #1e40af 100%)" }}>
               📚
             </div>
-            <div className="dashboard-stat-label">إجمالي التطبيقات</div>
+            <div className="dashboard-stat-label">Total Applications</div>
             <div className="dashboard-stat-value">{applications.length}</div>
           </div>
 
@@ -161,7 +161,7 @@ export default function StudentDashboard() {
             <div className="dashboard-stat-icon" style={{ background: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)" }}>
               ⏳
             </div>
-            <div className="dashboard-stat-label">قيد الانتظار</div>
+            <div className="dashboard-stat-label">Pending</div>
             <div className="dashboard-stat-value">{pendingCount}</div>
           </div>
 
@@ -169,7 +169,7 @@ export default function StudentDashboard() {
             <div className="dashboard-stat-icon" style={{ background: "linear-gradient(135deg, #10b981 0%, #059669 100%)" }}>
               ✅
             </div>
-            <div className="dashboard-stat-label">مقبول</div>
+            <div className="dashboard-stat-label">Accepted</div>
             <div className="dashboard-stat-value">{acceptedCount}</div>
           </div>
 
@@ -177,7 +177,7 @@ export default function StudentDashboard() {
             <div className="dashboard-stat-icon" style={{ background: "linear-gradient(135deg, #ef4444 0%, #dc2626 100%)" }}>
               ❌
             </div>
-            <div className="dashboard-stat-label">مرفوض</div>
+            <div className="dashboard-stat-label">Rejected</div>
             <div className="dashboard-stat-value">{rejectedCount}</div>
           </div>
         </div>
@@ -185,7 +185,7 @@ export default function StudentDashboard() {
         {/* Applications Section */}
         <div className="dashboard-table">
           <div className="dashboard-table-header">
-            <h2 className="dashboard-table-title">تطبيقاتك الجامعية</h2>
+            <h2 className="dashboard-table-title">Your University Applications</h2>
             {missingDocsCount > 0 && (
               <span style={{
                 padding: "6px 12px",
@@ -195,7 +195,7 @@ export default function StudentDashboard() {
                 fontSize: "14px",
                 fontWeight: "600"
               }}>
-                {missingDocsCount} تطبيق يحتاج وثائق
+                {missingDocsCount} application needs documents
               </span>
             )}
           </div>
@@ -203,12 +203,12 @@ export default function StudentDashboard() {
           {applications.length === 0 ? (
             <div style={{ padding: "60px 20px", textAlign: "center" }}>
               <div style={{ fontSize: "48px", marginBottom: "16px" }}>🎓</div>
-              <h3 style={{ marginBottom: "8px", color: "#374151" }}>لم تقدم على أي جامعة حتى الآن</h3>
+              <h3 style={{ marginBottom: "8px", color: "#374151" }}>You haven't applied to any university yet</h3>
               <p style={{ color: "#6b7280", marginBottom: "24px" }}>
-                ابدأ رحلتك الأكاديمية بالتقديم على الجامعات المتاحة
+                Start your academic journey by applying to available universities
               </p>
               <Link href="/universities" className="btn primary">
-                استعرض الجامعات المتاحة
+                Browse Available Universities
               </Link>
             </div>
           ) : (
@@ -229,7 +229,7 @@ export default function StudentDashboard() {
                         </div>
                       )}
                       <h3 className="application-university">
-                        {app.university?.name || "جامعة غير محددة"}
+                        {app.university?.name || "University Not Specified"}
                       </h3>
                       {app.university?.city && (
                         <p className="application-program">
@@ -244,9 +244,9 @@ export default function StudentDashboard() {
 
                   <div className="application-info">
                     <div className="application-info-item">
-                      <span className="application-info-label">تاريخ التقديم</span>
+                      <span className="application-info-label">Application Date</span>
                       <span className="application-info-value">
-                        {new Date(app.appliedAt).toLocaleDateString("ar-EG", {
+                        {new Date(app.appliedAt).toLocaleDateString("en-US", {
                           year: "numeric",
                           month: "long",
                           day: "numeric"
@@ -256,21 +256,21 @@ export default function StudentDashboard() {
 
                     {app.university?.type && (
                       <div className="application-info-item">
-                        <span className="application-info-label">نوع الجامعة</span>
+                        <span className="application-info-label">University Type</span>
                         <span className="application-info-value">{app.university.type}</span>
                       </div>
                     )}
 
                     {app.university?.language && (
                       <div className="application-info-item">
-                        <span className="application-info-label">لغة الدراسة</span>
+                        <span className="application-info-label">Language of Study</span>
                         <span className="application-info-value">{app.university.language}</span>
                       </div>
                     )}
 
                     {app.university?.tuition && (
                       <div className="application-info-item">
-                        <span className="application-info-label">الرسوم السنوية</span>
+                        <span className="application-info-label">Annual Fees</span>
                         <span className="application-info-value">{app.university.tuition}</span>
                       </div>
                     )}
@@ -279,7 +279,7 @@ export default function StudentDashboard() {
                   {app.university?.programs && app.university.programs.length > 0 && (
                     <div style={{ marginBottom: "16px" }}>
                       <span className="application-info-label" style={{ display: "block", marginBottom: "8px" }}>
-                        البرامج المتاحة
+                        Available Programs
                       </span>
                       <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                         {app.university.programs.map((program, idx) => (
@@ -309,7 +309,7 @@ export default function StudentDashboard() {
                       marginTop: "12px"
                     }}>
                       <span className="application-info-label" style={{ display: "block", marginBottom: "4px" }}>
-                        ملاحظات الإدارة
+                        Admin Notes
                       </span>
                       <p style={{ margin: 0, color: "#92400e", fontSize: "14px" }}>
                         {app.notes}
@@ -324,7 +324,7 @@ export default function StudentDashboard() {
                         className="btn primary"
                         style={{ textDecoration: "none", textAlign: "center" }}
                       >
-                        عرض تفاصيل الجامعة
+                        View University Details
                       </Link>
                     </div>
                   )}

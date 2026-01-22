@@ -9,19 +9,19 @@ export default function FeaturedUniversities() {
 
                 <div className="universities-grid">
                     <div className="university-card">
+                        <h3 className="university-name">Beykoz University</h3>
                         <div className="university-logo">
                             <Image src="/images/universities/u1.png" alt="Beykoz University" width={120} height={120} style={{ objectFit: 'contain' }} />
                         </div>
-                        <h3>Beykoz<br />University</h3>
-                        <span className="university-badge exclusive">Exclusive Partner</span>
+                        <span className="university-agent">Official Agent</span>
                     </div>
 
                     <div className="university-card">
+                        <h3 className="university-name">Istanbul Gelisim University</h3>
                         <div className="university-logo">
                             <Image src="/images/universities/u2.png" alt="Istanbul Gelisim University" width={120} height={120} style={{ objectFit: 'contain' }} />
                         </div>
-                        <h3>Istanbul Gelisim<br />University</h3>
-                        <span className="university-badge official">Official Agency</span>
+                        <span className="university-agent">Official Agent</span>
                     </div>
                 </div>
 

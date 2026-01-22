@@ -99,15 +99,15 @@ function AdminUsers() {
   if (loading) {
     return (
       <div className="admin-dashboard">
-        <h1>إدارة المستخدمين</h1>
-        <p>جاري التحميل...</p>
+        <h1>User Management</h1>
+        <p>Loading...</p>
       </div>
     );
   }
 
   return (
     <div className="admin-dashboard">
-      <h1>إدارة المستخدمين</h1>
+      <h1>User Management</h1>
 
       {error && (
         <div style={{ color: "red", marginBottom: "20px" }}>
@@ -119,11 +119,11 @@ function AdminUsers() {
         <table>
           <thead>
             <tr>
-              <th>الاسم</th>
-              <th>البريد الإلكتروني</th>
-              <th>الدور</th>
-              <th>تاريخ التسجيل</th>
-              <th>الإجراءات</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Registration Date</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -157,31 +157,31 @@ function AdminUsers() {
                       value={editForm.role}
                       onChange={(e) => setEditForm({ ...editForm, role: e.target.value })}
                     >
-                      <option value="student">طالب</option>
-                      <option value="admin">مدير</option>
+                      <option value="student">Student</option>
+                      <option value="admin">Admin</option>
                     </select>
                   ) : (
-                    user.role === "admin" ? "مدير" : "طالب"
+                    user.role === "admin" ? "Admin" : "Student"
                   )}
                 </td>
-                <td>{new Date(user.createdAt).toLocaleDateString("ar-EG")}</td>
+                <td>{new Date(user.createdAt).toLocaleDateString("en-US")}</td>
                 <td>
                   {editingUser === user._id ? (
                     <>
                       <button onClick={handleSave} className="btn small primary">
-                        حفظ
+                        Save
                       </button>
                       <button onClick={handleCancel} className="btn small secondary">
-                        إلغاء
+                        Cancel
                       </button>
                     </>
                   ) : (
                     <>
                       <button onClick={() => handleEdit(user)} className="btn small primary">
-                        تعديل
+                        Edit
                       </button>
                       <button onClick={() => handleDelete(user._id)} className="btn small error">
-                        حذف
+                        Delete
                       </button>
                     </>
                   )}

@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "@/lib/i18n";
 import Layout from "@/components/layout/Layout";
 
 export default function App({ Component, pageProps }) {

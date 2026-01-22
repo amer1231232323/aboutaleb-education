@@ -35,10 +35,10 @@ export default function UniversityDetails({ name, logo }) {
         <div className="container">
           <h1>{name}</h1>
           <Image src={logo} alt={name} width={200} height={150} />
-          <p>إسطنبول – تركيا</p>
+          <p>Istanbul - Turkey</p>
 
           <Link href="/student/register" className="btn primary">
-            قدّم الآن
+            Apply Now
           </Link>
         </div>
       </section>
@@ -47,23 +47,23 @@ export default function UniversityDetails({ name, logo }) {
       <section className="university-info">
         <div className="container info-grid">
           <div className="info-card">
-            <h4>لغة الدراسة</h4>
-            <p>الإنجليزية / التركية</p>
+            <h4>Language of Study</h4>
+            <p>English / Turkish</p>
           </div>
 
           <div className="info-card">
-            <h4>الرسوم</h4>
-            <p>من 2500$ سنويًا</p>
+            <h4>Tuition Fees</h4>
+            <p>From $2500 annually</p>
           </div>
 
           <div className="info-card">
-            <h4>نوع الجامعة</h4>
-            <p>خاصة</p>
+            <h4>University Type</h4>
+            <p>Private</p>
           </div>
 
           <div className="info-card">
-            <h4>الاعتماد</h4>
-            <p>معترف بها</p>
+            <h4>Accreditation</h4>
+            <p>Accredited</p>
           </div>
         </div>
       </section>
@@ -71,10 +71,10 @@ export default function UniversityDetails({ name, logo }) {
       {/* DESCRIPTION */}
       <section className="university-description">
         <div className="container">
-          <h2 className="section-title">عن الجامعة</h2>
+          <h2 className="section-title">About the University</h2>
           <p>
-            جامعة خاصة متميزة في تركيا، تقدم برامج تعليمية قوية
-            وبيئة دراسية حديثة مع اعتراف دولي.
+            A distinguished private university in Turkey, offering strong educational programs
+            and a modern study environment with international recognition.
           </p>
         </div>
       </section>
@@ -82,13 +82,13 @@ export default function UniversityDetails({ name, logo }) {
       {/* MAJORS */}
       <section className="university-majors">
         <div className="container">
-          <h2 className="section-title">التخصصات المتاحة</h2>
+          <h2 className="section-title">Available Majors</h2>
 
           <div className="majors-grid">
-            <div className="major-card">هندسة</div>
-            <div className="major-card">إدارة أعمال</div>
-            <div className="major-card">طب</div>
-            <div className="major-card">صيدلة</div>
+            <div className="major-card">Engineering</div>
+            <div className="major-card">Business Administration</div>
+            <div className="major-card">Medicine</div>
+            <div className="major-card">Pharmacy</div>
           </div>
         </div>
       </section>
@@ -96,8 +96,8 @@ export default function UniversityDetails({ name, logo }) {
       {/* CTA */}
       <section className="cta">
         <div className="container">
-          <h2>جاهز تبدأ؟</h2>
-          <p>سيب الباقي علينا</p>
+          <h2>Ready to Start?</h2>
+          <p>Leave the rest to us</p>
 
           <a
             href="https://wa.me/905015959880"
@@ -105,7 +105,7 @@ export default function UniversityDetails({ name, logo }) {
             rel="noreferrer"
             className="btn whatsapp"
           >
-            تواصل واتساب
+            Contact WhatsApp
           </a>
         </div>
       </section>

@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function Header() {
   const router = useRouter();
+  const { i18n, t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState(null);
+  const [langOpen, setLangOpen] = useState(false);
 
   useEffect(() => {
     // Check if user is logged in
@@ -26,6 +29,11 @@ export default function Header() {
     localStorage.removeItem("user");
     setUser(null);
     router.push("/");
+  };
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    setLangOpen(false);
   };
 
   return (
@@ -101,9 +109,23 @@ export default function Header() {
             </Link>
           )}
 
-          <button className="language-switch">
-            EN
-          </button>
+          <div className="language-dropdown">
+            <button
+              className="language-switch"
+              onClick={() => setLangOpen(!langOpen)}
+            >
+              + AR - EN-GB
+            </button>
+            {langOpen && (
+              <div className="language-options">
+                <button onClick={() => changeLanguage('ar')}>العربية</button>
+                <button onClick={() => changeLanguage('tr')}>Türkçe</button>
+                <button onClick={() => changeLanguage('fa')}>فارسی</button>
+                <button onClick={() => changeLanguage('ru')}>Русский</button>
+                <button onClick={() => changeLanguage('fr')}>Français</button>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* BURGER */}
