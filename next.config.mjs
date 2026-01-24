@@ -1,41 +1,20 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  allowedDevOrigins: [
-    'localhost',
-    '127.0.0.1',
-    '172.18.224.1',
-  ],
-  experimental: {
-    turbo: {
-      resolveAlias: {
-        '@': path.resolve(__dirname, 'src'),
-      },
+    reactStrictMode: true,
+
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'res.cloudinary.com',
+            },
+        ],
     },
-  },
-  webpack: (config, { isServer }) => {
-    config.resolve.alias['@'] = path.resolve(__dirname, 'src');
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        net: false,
-        dns: false,
-        child_process: false,
-        tls: false,
-        async_hooks: false,
-        'fs/promises': false,
-        'timers/promises': false,
-      };
-    }
-    return config;
-  },
+
+    // Environment variables that should be available on the client
+    env: {
+        NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || '',
+    },
 };
 
 export default nextConfig;

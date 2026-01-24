@@ -62,15 +62,15 @@ function EditUniversity() {
         body: JSON.stringify(formData),
       });
       if (!res.ok) throw new Error("Failed to update university");
-      alert("تم التحديث بنجاح");
+      alert("Updated successfully");
       router.push("/admin/universities");
     } catch (err) {
-      alert("حدث خطأ أثناء التحديث");
+      alert("An error occurred during update");
     }
   }
 
   async function handleDelete() {
-    if (!confirm("هل تريد حذف الجامعة؟")) return;
+    if (!confirm("Do you want to delete the university?")) return;
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(`/api/admin/universities/${id}`, {
@@ -80,30 +80,30 @@ function EditUniversity() {
         },
       });
       if (!res.ok) throw new Error("Failed to delete university");
-      alert("تم الحذف بنجاح");
+      alert("Deleted successfully");
       router.push("/admin/universities");
     } catch (err) {
-      alert("حدث خطأ أثناء الحذف");
+      alert("An error occurred during deletion");
     }
   }
 
-  if (loading) return <div>جاري التحميل...</div>;
-  if (error) return <div>خطأ: {error}</div>;
-  if (!university) return <div>الجامعة غير موجودة</div>;
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!university) return <div>University not found</div>;
 
   return (
     <div>
-      <h2>تعديل الجامعة</h2>
+      <h2>Edit University</h2>
 
       <Link href="/admin/universities">
         <button style={{ margin: "10px 0", padding: "8px 14px", background: "#0070f3", color: "#fff" }}>
-          العودة إلى القائمة
+          Back to list
         </button>
       </Link>
 
       <form onSubmit={handleSubmit} style={{ maxWidth: "600px", margin: "20px 0" }}>
         <div style={{ marginBottom: "10px" }}>
-          <label>الاسم:</label>
+          <label>Name:</label>
           <input
             type="text"
             value={formData.name}
@@ -114,7 +114,7 @@ function EditUniversity() {
         </div>
 
         <div style={{ marginBottom: "10px" }}>
-          <label>المدينة:</label>
+          <label>City:</label>
           <input
             type="text"
             value={formData.city}
@@ -124,7 +124,7 @@ function EditUniversity() {
         </div>
 
         <div style={{ marginBottom: "10px" }}>
-          <label>النوع:</label>
+          <label>Type:</label>
           <input
             type="text"
             value={formData.type}
@@ -134,7 +134,7 @@ function EditUniversity() {
         </div>
 
         <div style={{ marginBottom: "10px" }}>
-          <label>الموقع الإلكتروني:</label>
+          <label>Website:</label>
           <input
             type="url"
             value={formData.website}
@@ -144,7 +144,7 @@ function EditUniversity() {
         </div>
 
         <div style={{ marginBottom: "10px" }}>
-          <label>الوصف:</label>
+          <label>Description:</label>
           <textarea
             value={formData.description}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
@@ -154,7 +154,7 @@ function EditUniversity() {
         </div>
 
         <div style={{ marginBottom: "10px" }}>
-          <label>رابط الصورة:</label>
+          <label>Image URL:</label>
           <input
             type="url"
             value={formData.image}
@@ -164,11 +164,11 @@ function EditUniversity() {
         </div>
 
         <button type="submit" style={{ padding: "10px 20px", background: "#0070f3", color: "#fff", marginRight: "10px" }}>
-          حفظ التغييرات
+          Save Changes
         </button>
 
         <button type="button" onClick={handleDelete} style={{ padding: "10px 20px", background: "red", color: "#fff" }}>
-          حذف الجامعة
+          Delete University
         </button>
       </form>
     </div>

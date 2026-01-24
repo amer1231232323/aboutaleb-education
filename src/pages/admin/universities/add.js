@@ -49,11 +49,11 @@ function AddUniversity() {
 
   return (
     <div className="admin-dashboard">
-      <h1>إضافة جامعة جديدة</h1>
+      <h1>Add New University</h1>
 
       <Link href="/admin/universities">
         <button className="btn secondary" style={{ marginBottom: "20px" }}>
-          ← العودة
+          ← Back
         </button>
       </Link>
 
@@ -61,11 +61,11 @@ function AddUniversity() {
 
       <form onSubmit={handleSubmit} style={{ maxWidth: "600px" }}>
         <div className="form-group">
-          <label>اسم الجامعة *</label>
+          <label>University Name *</label>
           <input
             type="text"
             name="name"
-            placeholder="أدخل اسم الجامعة"
+            placeholder="Enter university name"
             value={form.name}
             onChange={handleChange}
             required
@@ -73,29 +73,29 @@ function AddUniversity() {
         </div>
 
         <div className="form-group">
-          <label>المدينة</label>
+          <label>City</label>
           <input
             type="text"
             name="city"
-            placeholder="إسطنبول / أنقرة / إلخ"
+            placeholder="Istanbul / Ankara / etc"
             value={form.city}
             onChange={handleChange}
           />
         </div>
 
         <div className="form-group">
-          <label>نوع الجامعة</label>
+          <label>University Type</label>
           <input
             type="text"
             name="type"
-            placeholder="خاصة / حكومية"
+            placeholder="Private / Public"
             value={form.type}
             onChange={handleChange}
           />
         </div>
 
         <div className="form-group">
-          <label>الموقع الإلكتروني</label>
+          <label>Website</label>
           <input
             type="url"
             name="website"
@@ -106,10 +106,10 @@ function AddUniversity() {
         </div>
 
         <div className="form-group">
-          <label>الوصف</label>
+          <label>Description</label>
           <textarea
             name="description"
-            placeholder="وصف الجامعة والبرامج المتاحة"
+            placeholder="Description of the university and available programs"
             value={form.description}
             onChange={handleChange}
             rows="4"
@@ -117,7 +117,7 @@ function AddUniversity() {
         </div>
 
         <div className="form-group">
-          <label>رابط الصورة</label>
+          <label>Image URL</label>
           <input
             type="url"
             name="image"
@@ -127,7 +127,7 @@ function AddUniversity() {
           />
         </div>
         <button type="submit" className="btn primary" disabled={loading}>
-          {loading ? "جاري الإضافة..." : "+ إضافة جامعة"}
+          {loading ? "Adding..." : "Add University"}
         </button>
       </form>
     </div>

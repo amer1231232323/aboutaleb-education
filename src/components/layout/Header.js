@@ -36,6 +36,18 @@ export default function Header() {
     setLangOpen(false);
   };
 
+  const getLanguageLabel = () => {
+    const langLabels = {
+      ar: 'العربية',
+      tr: 'Türkçe',
+      fa: 'فارسی',
+      ru: 'Русский',
+      fr: 'Français',
+      en: 'English'
+    };
+    return langLabels[i18n.language] || 'العربية';
+  };
+
   return (
     <header className="header">
       <div className="container header-content">
@@ -57,28 +69,28 @@ export default function Header() {
         {/* NAV */}
         <nav className={`nav ${open ? "open" : ""}`}>
           <Link href="/" className={isActive("/") ? "active" : ""}>
-            Home
+            {t('home')}
           </Link>
 
           <Link
             href="/services"
             className={isActive("/services") ? "active" : ""}
           >
-            Services
+            {t('services')}
           </Link>
 
           <Link
             href="/universities"
             className={isActive("/universities") ? "active" : ""}
           >
-            Universities
+            {t('universities')}
           </Link>
 
           <Link
             href="/contact"
             className={isActive("/contact") ? "active" : ""}
           >
-            Contact
+            {t('contact')}
           </Link>
         </nav>
 
@@ -88,24 +100,24 @@ export default function Header() {
             <>
               {user.role === "admin" && (
                 <Link href="/admin/dashboard" className="btn secondary small">
-                  Admin
+                  {t('admin')}
                 </Link>
               )}
               {user.role !== "admin" && (
                 <Link href="/student/dashboard" className="btn secondary small">
-                  Dashboard
+                  {t('dashboard')}
                 </Link>
               )}
               <button
                 onClick={handleLogout}
                 className="btn outline small"
               >
-                Logout
+                {t('logout')}
               </button>
             </>
           ) : (
             <Link href="/student/register" className="btn primary small">
-              Apply
+              {t('apply')}
             </Link>
           )}
 
@@ -114,7 +126,7 @@ export default function Header() {
               className="language-switch"
               onClick={() => setLangOpen(!langOpen)}
             >
-              + AR - EN-GB
+              {getLanguageLabel()}
             </button>
             {langOpen && (
               <div className="language-options">
@@ -123,6 +135,7 @@ export default function Header() {
                 <button onClick={() => changeLanguage('fa')}>فارسی</button>
                 <button onClick={() => changeLanguage('ru')}>Русский</button>
                 <button onClick={() => changeLanguage('fr')}>Français</button>
+                <button onClick={() => changeLanguage('en')}>English</button>
               </div>
             )}
           </div>

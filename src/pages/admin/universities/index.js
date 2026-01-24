@@ -38,7 +38,7 @@ function UniversitiesList() {
   }, []);
 
   async function handleDelete(id) {
-    if (!confirm("هل تريد حذف الجامعة؟")) return;
+    if (!confirm("Do you want to delete the university?")) return;
 
     try {
       const token = localStorage.getItem("token");
@@ -50,40 +50,40 @@ function UniversitiesList() {
       });
 
       if (res.ok) {
-        alert("تم الحذف بنجاح");
+        alert("Deleted successfully");
         fetchData();
       } else {
-        alert("حدث خطأ أثناء الحذف");
+        alert("An error occurred during deletion");
       }
     } catch (err) {
-      alert("خطأ في الاتصال");
+      alert("Connection error");
     }
   }
 
   return (
     <div className="admin-dashboard">
-      <h1>إدارة الجامعات</h1>
+      <h1>University Management</h1>
 
       <Link href="/admin/universities/add">
         <button className="btn primary" style={{ marginBottom: "20px" }}>
-          + إضافة جامعة جديدة
+          + Add New University
         </button>
       </Link>
 
       {loading ? (
-        <p>جاري التحميل...</p>
+        <p>Loading...</p>
       ) : universities.length === 0 ? (
-        <p>لا توجد جامعات. <Link href="/admin/universities/add">أضف الآن</Link></p>
+        <p>No universities. <Link href="/admin/universities/add">Add now</Link></p>
       ) : (
         <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "20px" }}>
           <thead>
             <tr style={{ borderBottom: "2px solid #ddd", backgroundColor: "#f5f5f5" }}>
-              <th style={{ padding: "12px", textAlign: "right" }}>#</th>
-              <th style={{ padding: "12px", textAlign: "right" }}>الصورة</th>
-              <th style={{ padding: "12px", textAlign: "right" }}>الاسم</th>
-              <th style={{ padding: "12px", textAlign: "right" }}>المدينة</th>
-              <th style={{ padding: "12px", textAlign: "right" }}>النوع</th>
-              <th style={{ padding: "12px", textAlign: "right" }}>الإجراءات</th>
+              <th style={{ padding: "12px", textAlign: "left" }}>#</th>
+              <th style={{ padding: "12px", textAlign: "left" }}>Image</th>
+              <th style={{ padding: "12px", textAlign: "left" }}>Name</th>
+              <th style={{ padding: "12px", textAlign: "left" }}>City</th>
+              <th style={{ padding: "12px", textAlign: "left" }}>Type</th>
+              <th style={{ padding: "12px", textAlign: "left" }}>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -107,7 +107,7 @@ function UniversitiesList() {
                 <td style={{ padding: "12px" }}>
                   <Link href={`/admin/universities/${u._id}`}>
                     <button className="btn secondary" style={{ marginRight: "8px", padding: "6px 12px", fontSize: "14px" }}>
-                      تعديل
+                      Edit
                     </button>
                   </Link>
                   <button
@@ -115,7 +115,7 @@ function UniversitiesList() {
                     onClick={() => handleDelete(u._id)}
                     style={{ padding: "6px 12px", fontSize: "14px" }}
                   >
-                    حذف
+                    Delete
                   </button>
                 </td>
               </tr>

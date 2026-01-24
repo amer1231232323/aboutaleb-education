@@ -47,38 +47,25 @@
     margin: 0 auto;
 }
 
+/* UNIVERSITY CARD - FIXED LAYOUT */
 .university-card {
     background: var(--white);
     border-radius: var(--radius-2xl);
     overflow: hidden;
     box-shadow: var(--shadow-md);
     transition: all var(--transition-base);
+    
+    /* Flexbox vertical layout */
     display: flex;
     flex-direction: column;
-    height: 100%;
-    padding: var(--spacing-24);
-    text-align: center;
-}
-
-.university-name {
-    font-size: var(--font-size-xl);
-    color: var(--gray-900);
-    margin-bottom: var(--spacing-16);
-    font-weight: 600;
-}
-
-.university-logo {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    height: 120px;
-    margin-bottom: var(--spacing-16);
-}
-
-.university-agent {
-    font-size: var(--font-size-sm);
-    color: var(--gray-600);
-    font-weight: 500;
+    
+    /* Sizing - REVERTED TO ORIGINAL */
+    min-height: 380px;
+    padding: var(--spacing-32);
+    
+    /* Remove any transforms */
+    transform: none;
 }
 
 .university-card:hover {
@@ -86,51 +73,71 @@
     transform: translateY(-8px);
 }
 
-.university-card-image {
+/* University Name - Top of card, horizontal, centered */
+.university-name {
+    /* No rotation - keep text horizontal */
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--gray-900);
+    text-align: center;
+    margin-bottom: var(--spacing-24);
+    line-height: 1.4;
     width: 100%;
-    height: 200px;
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+    
+    /* Remove any transforms */
+    transform: none;
+}
+
+/* University Logo - Centered, large */
+.university-logo {
+    /* Flexbox centering */
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    position: relative;
-}
-
-.university-card-image img {
+    
+    /* Larger size to accommodate 500px logo */
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--transition-slow);
+    height: 400px;
+    margin-bottom: var(--spacing-24);
+    
+    /* Remove absolute positioning */
+    position: relative;
+    
+    /* Remove any transforms */
+    transform: none;
 }
 
-.university-card:hover .university-card-image img {
-    transform: scale(1.05);
+.university-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
 }
 
-.university-card-body {
-    padding: var(--spacing-24);
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+/* Details Button - Centered under logo */
+.university-card .btn {
+    /* Remove absolute positioning */
+    position: relative;
+    
+    /* Center alignment */
+    align-self: center;
+    
+    /* Spacing */
+    margin-top: auto;
+    padding: var(--spacing-12) var(--spacing-32);
+    
+    /* Remove any transforms */
+    transform: none;
 }
 
-.university-card h3 {
-    font-size: var(--font-size-2xl);
-    color: var(--gray-900);
-    margin-bottom: var(--spacing-12);
-}
-
-.university-card p {
+/* Agent Label (if exists) */
+.university-agent {
     font-size: var(--font-size-sm);
     color: var(--gray-600);
-    margin-bottom: var(--spacing-16);
-    flex: 1;
-}
-
-.university-card .btn {
-    align-self: flex-start;
-    margin-top: auto;
+    font-weight: 500;
+    text-align: center;
+    margin-top: var(--spacing-8);
 }
 
 /* UNIVERSITY TOP SECTION */
@@ -144,12 +151,13 @@
     margin-right: auto;
 }
 
-.university-logo {
+.university-top .university-logo {
     position: sticky;
     top: 120px;
+    height: auto;
 }
 
-.university-logo img {
+.university-top .university-logo img {
     width: 100%;
     height: auto;
     object-fit: contain;
@@ -203,12 +211,9 @@
 }
 
 @keyframes float {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: translateY(0);
     }
-
     50% {
         transform: translateY(-20px);
     }
@@ -223,134 +228,6 @@
     font-size: var(--font-size-5xl);
     margin-bottom: var(--spacing-24);
     color: var(--white);
-}
-
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-    .universities {
-        padding: var(--spacing-64) var(--spacing-20);
-    }
-
-    .universities-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
-
-    .university-top {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-32);
-    }
-
-    .university-logo {
-        position: static;
-    }
-}
-
-@media (max-width: 768px) {
-    .universities {
-        padding: var(--spacing-48) var(--spacing-16);
-    }
-
-    .section-title {
-        font-size: var(--font-size-3xl);
-        margin-bottom: var(--spacing-40);
-    }
-
-    .universities-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: var(--spacing-20);
-    }
-
-    .university-hero {
-        padding: var(--spacing-48) var(--spacing-16);
-    }
-
-    .university-hero h1 {
-        font-size: var(--font-size-4xl);
-    }
-
-    .about-top {
-        padding: var(--spacing-20);
-    }
-}
-
-.universities-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: var(--spacing-32);
-}
-
-/* UNIVERSITY TOP SECTION */
-.university-top {
-    display: grid;
-    grid-template-columns: 260px 1fr;
-    gap: var(--spacing-40);
-    margin-bottom: var(--spacing-48);
-}
-
-.university-logo {
-    position: sticky;
-    top: 120px;
-}
-
-.university-logo img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    background-color: var(--gray-50);
-    padding: var(--spacing-24);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-}
-
-.university-main h1 {
-    font-size: var(--font-size-4xl);
-    color: var(--gray-900);
-    margin-bottom: var(--spacing-16);
-}
-
-.about-top {
-    margin-top: var(--spacing-40);
-    text-align: right;
-    padding: var(--spacing-24);
-    background-color: var(--gray-50);
-    border-radius: var(--radius-lg);
-    border-right: 4px solid var(--primary);
-}
-
-/* UNIVERSITY DETAILS */
-.university-details {
-    padding: var(--spacing-64) 0;
-}
-
-.university-hero {
-    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
-    color: var(--white);
-    padding: var(--spacing-64) 0;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.university-hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: -100px;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-}
-
-.university-hero .container {
-    position: relative;
-    z-index: 1;
-}
-
-.university-hero h1 {
-    color: var(--white);
-    font-size: var(--font-size-5xl);
-    margin-bottom: var(--spacing-8);
 }
 
 .university-hero p {
@@ -393,41 +270,60 @@
     gap: var(--spacing-24);
 }
 
-/* MAJOR CARD (SEE ALSO: components/cards.css) */
-/* Already defined in cards.css */
-
 /* RESPONSIVE */
 @media (max-width: 1024px) {
+    .universities {
+        padding: var(--spacing-64) var(--spacing-20);
+    }
+
+    .universities-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
     .university-top {
+        grid-template-columns: 1fr;
         gap: var(--spacing-32);
     }
 
-    .university-logo {
+    .university-top .university-logo {
         position: static;
     }
 }
 
 @media (max-width: 768px) {
-    .university-top {
-        grid-template-columns: 1fr;
+    .universities {
+        padding: var(--spacing-48) var(--spacing-16);
     }
 
     .section-title {
         font-size: var(--font-size-3xl);
-        margin-bottom: var(--spacing-32);
+        margin-bottom: var(--spacing-40);
     }
 
     .universities-grid {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: var(--spacing-24);
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: var(--spacing-20);
+    }
+
+    .university-card {
+        min-height: 340px;
+        padding: var(--spacing-24);
+    }
+
+    .university-logo {
+        height: 150px;
     }
 
     .university-hero {
-        padding: var(--spacing-48) 0;
+        padding: var(--spacing-48) var(--spacing-16);
     }
 
     .university-hero h1 {
         font-size: var(--font-size-4xl);
+    }
+
+    .about-top {
+        padding: var(--spacing-20);
     }
 
     .university-details,
@@ -449,6 +345,18 @@
 
     .universities-grid {
         grid-template-columns: 1fr;
+    }
+
+    .university-card {
+        min-height: 320px;
+    }
+
+    .university-name {
+        font-size: var(--font-size-base);
+    }
+
+    .university-logo {
+        height: 120px;
     }
 
     .university-hero h1 {

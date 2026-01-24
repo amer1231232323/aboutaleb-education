@@ -21,7 +21,7 @@ export default async function handler(req, res) {
         const universities = await University.find().sort({ createdAt: -1 });
         return res.status(200).json(universities);
       } catch (err) {
-        return res.status(500).json({ message: "خطأ في السيرفر" });
+        return res.status(500).json({ message: "Server error" });
       }
 
     case "POST":
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
         const uni = await University.create(req.body);
         return res.status(201).json(uni);
       } catch (err) {
-        return res.status(500).json({ message: "خطأ أثناء الإضافة" });
+        return res.status(500).json({ message: "Error during addition" });
       }
 
     case "PUT":
@@ -38,16 +38,16 @@ export default async function handler(req, res) {
         const updated = await University.findByIdAndUpdate(id, req.body, { new: true });
         return res.status(200).json(updated);
       } catch (err) {
-        return res.status(500).json({ message: "خطأ أثناء التعديل" });
+        return res.status(500).json({ message: "Error during modification" });
       }
 
     case "DELETE":
       try {
         const { id } = req.query;
         await University.findByIdAndDelete(id);
-        return res.status(200).json({ message: "تم الحذف بنجاح" });
+        return res.status(200).json({ message: "Deleted successfully" });
       } catch (err) {
-        return res.status(500).json({ message: "خطأ أثناء الحذف" });
+        return res.status(500).json({ message: "Error during deletion" });
       }
 
     default:

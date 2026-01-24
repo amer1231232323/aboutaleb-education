@@ -3,6 +3,10 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "eslint.validate": ["javascript", "javascriptreact"],
-  "eslint.alwaysShowStatus": true
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact"
+  ],
+  "eslint.alwaysShowStatus": true,
+  "CodeGPT.apiKey": "Gemini CLI"
 }

@@ -21,5 +21,5 @@ export default async function handler(req, res) {
 
   const uni = await University.create({ name, country });
 
-  res.status(201).json({ message: "تمت الإضافة", uni });
+  res.status(201).json({ message: "Added successfully", uni });
 }

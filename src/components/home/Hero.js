@@ -2,8 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export default function Hero() {
+  const { t } = useTranslation();
+
   return (
     <motion.section
       className="hero"
@@ -14,20 +17,18 @@ export default function Hero() {
       <div className="container hero-content">
         <div className="hero-text">
           <h1>
-            Your Path to Turkish
+            {t('heroTitle')}
             <br />
-            <span>Universities Starts Here</span>
+            <span>{t('heroTitleSpan')}</span>
           </h1>
 
           <p>
-            Fast Admissions, International Support,
-            <br />
-            and Exclusive University Partnerships.
+            {t('heroDescription')}
           </p>
 
           <div className="hero-buttons">
             <Link href="/student/register" className="btn primary">
-              Apply Now
+              {t('applyNow')}
             </Link>
 
             <a
@@ -36,16 +37,15 @@ export default function Hero() {
               rel="noreferrer"
               className="btn whatsapp"
             >
-              <FaWhatsapp /> Contact via WhatsApp
+              <FaWhatsapp /> {t('contactViaWhatsapp')}
             </a>
           </div>
         </div>
 
         <div className="hero-image">
-          <Image src="/images/hero.jpg" alt="Students in Turkey" fill style={{ objectFit: 'cover' }} />
+          <Image src="/images/hero.jpg" alt={t('studentsInTurkey')} fill style={{ objectFit: 'cover' }} />
         </div>
       </div>
     </motion.section>
   );
 }
- 

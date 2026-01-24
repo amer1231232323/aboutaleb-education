@@ -14,10 +14,10 @@ const upload = multer({
 
 const apiRoute = nextConnect({
   onError(error, req, res) {
-    res.status(501).json({ error: `حدث خطأ: ${error.message}` });
+    res.status(501).json({ error: `An error occurred: ${error.message}` });
   },
   onNoMatch(req, res) {
-    res.status(405).json({ error: `الطريقة غير مسموحة` });
+    res.status(405).json({ error: `Method not allowed` });
   },
 });
 
@@ -29,7 +29,7 @@ apiRoute.post((req, res) => {
 
 export const config = {
   api: {
-    bodyParser: false, // مهم جدًا
+    bodyParser: false, // Very important
   },
 };
 
