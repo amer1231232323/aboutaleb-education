@@ -1,5 +1,3 @@
-import Link from "next/link";
-import Image from "next/image";
 import fs from 'fs';
 import path from 'path';
 import UniversityCard from "@/components/universities/UniversityCard";

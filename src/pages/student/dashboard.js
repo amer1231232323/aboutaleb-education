@@ -62,7 +62,6 @@ export default function StudentDashboard() {
           setError("Failed to load applications");
         }
       } catch (err) {
-        console.error("Error fetching data:", err);
         setError("An error occurred while loading your data");
       } finally {
         setLoading(false);

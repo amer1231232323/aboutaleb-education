@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import { withAdminAuth } from "@/lib/withAdminAuth";
 
 function ApplicationsManagement() {
-    const router = useRouter();
     const [applications, setApplications] = useState([]);
     const [loading, setLoading] = useState(true);
     const [editingId, setEditingId] = useState(null);
@@ -22,11 +20,9 @@ function ApplicationsManagement() {
             if (res.ok) {
                 setApplications(data.data || []);
             } else {
-                console.error("Error fetching applications:", data.message);
                 setApplications([]);
             }
         } catch (err) {
-            console.error("Error fetching applications:", err);
             setApplications([]);
         } finally {
             setLoading(false);

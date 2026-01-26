@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { FaGraduationCap, FaFileAlt, FaPassport, FaHome, FaBook, FaHandshake, FaPlane } from "react-icons/fa";
 
 const services = [

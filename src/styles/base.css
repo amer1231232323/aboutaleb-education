@@ -19,55 +19,55 @@
     --spacing-96: 96px;
 
     /* COLOR PALETTE - New Design System */
-    /* Primary - Coral/Orange for CTAs */
-    --color-primary: #E85D4A;
-    --color-primary-light: #FF7A66;
-    --color-primary-dark: #D44A38;
-    --color-primary-hover: #D44A38;
+    /* Primary - Yellow for CTAs */
+    --color-primary: #F4B400;
+    --color-primary-light: #F4B400;
+    --color-primary-dark: #E6A800;
+    --color-primary-hover: #E6A800;
 
-    /* Secondary - Teal/Cyan for accents */
-    --color-secondary: #1A9B8E;
-    --color-secondary-light: #2DB5A7;
-    --color-secondary-dark: #157A6F;
+    /* Secondary - Red for accents */
+    --color-secondary: #D32F2F;
+    --color-secondary-light: #D32F2F;
+    --color-secondary-dark: #B92525;
 
-    /* Navy/Dark Blue for header/footer */
-    --color-navy: #2C3E50;
-    --color-navy-light: #34495E;
-    --color-navy-dark: #1A252F;
 
     /* Neutral Colors */
     --color-white: #FFFFFF;
     --color-black: #000000;
-    --color-gray-50: #F8F9FA;
-    --color-gray-100: #F5F5F5;
-    --color-gray-200: #E9ECEF;
-    --color-gray-300: #DEE2E6;
-    --color-gray-400: #CED4DA;
-    --color-gray-500: #ADB5BD;
-    --color-gray-600: #6C757D;
-    --color-gray-700: #495057;
-    --color-gray-800: #343A40;
-    --color-gray-900: #212529;
+    --color-gray-50: #F9FAFB;
+    --color-gray-100: #F3F4F6;
+    --color-gray-200: #E5E7EB;
+    --color-gray-300: #D1D5DB;
+    --color-gray-400: #9CA3AF;
+    --color-gray-500: #6B7280;
+    --color-gray-600: #4B5563;
+    --color-gray-700: #374151;
+    --color-gray-800: #1F2937;
+    --color-gray-900: #111827;
+
+    /* Header Colors */
+    --color-navy: #1F2937;
+    --color-navy-light: #F3F4F6;
 
     /* Legacy color mappings for compatibility */
-    --primary: #E85D4A;
-    --primary-light: #FF7A66;
-    --primary-dark: #D44A38;
-    --secondary: #1A9B8E;
-    --secondary-light: #2DB5A7;
-    --secondary-dark: #157A6F;
+    --primary: #F4B400;
+    --primary-light: #F4B400;
+    --primary-dark: #E6A800;
+    --secondary: #D32F2F;
+    --secondary-light: #D32F2F;
+    --secondary-dark: #B92525;
     --white: #FFFFFF;
-    --dark: #2C3E50;
-    --gray-50: #F8F9FA;
-    --gray-100: #F5F5F5;
-    --gray-200: #E9ECEF;
-    --gray-300: #DEE2E6;
-    --gray-400: #CED4DA;
-    --gray-500: #ADB5BD;
-    --gray-600: #6C757D;
-    --gray-700: #495057;
-    --gray-800: #343A40;
-    --gray-900: #212529;
+    --dark: #1F2937;
+    --gray-50: #F9FAFB;
+    --gray-100: #F3F4F6;
+    --gray-200: #E5E7EB;
+    --gray-300: #D1D5DB;
+    --gray-400: #9CA3AF;
+    --gray-500: #6B7280;
+    --gray-600: #4B5563;
+    --gray-700: #374151;
+    --gray-800: #1F2937;
+    --gray-900: #111827;
 
     /* Semantic Colors */
     --color-success: #28A745;
@@ -285,7 +285,7 @@ textarea:focus,
 select:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(232, 93, 74, 0.1);
+    box-shadow: 0 0 0 3px rgba(244, 180, 0, 0.1);
 }
 
 input::placeholder {

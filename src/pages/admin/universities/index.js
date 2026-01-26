@@ -22,12 +22,10 @@ function UniversitiesList() {
       if (res.ok) {
         setUniversities(data);
       } else {
-        console.error("Error fetching universities:", data.message);
-        setUniversities([]); // Set to empty array on error
+        setUniversities([]);
       }
     } catch (err) {
-      console.error("Error fetching universities:", err);
-      setUniversities([]); // Set to empty array on error
+      setUniversities([]);
     } finally {
       setLoading(false);
     }

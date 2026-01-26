@@ -8,5 +8,5 @@
     "javascriptreact"
   ],
   "eslint.alwaysShowStatus": true,
-  "CodeGPT.apiKey": "Gemini CLI"
+  "CodeGPT.apiKey": "DeepSeek"
 }

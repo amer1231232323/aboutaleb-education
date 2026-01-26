@@ -16,30 +16,30 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
-    "baseUrl": "src",
+    "jsx": "preserve",
+    "baseUrl": ".",
     "paths": {
       "@/*": [
-        "./*"
+        "./src/*"
       ]
     },
     "forceConsistentCasingInFileNames": true,
     "typeRoots": [
-      "../node_modules/@types"
+      "node_modules/@types"
     ]
   },
   "include": [
-    "../next-env.d.ts",
+    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/*.mts",
     "**/*.js",
     "**/*.jsx",
-    "../.next/types/**/*.ts"
+    ".next/types/**/*.ts"
   ],
   "exclude": [
-    "../node_modules",
-    "../.next",
-    "../out"
+    "node_modules",
+    ".next",
+    "out"
   ]
 }

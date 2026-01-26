@@ -28,7 +28,6 @@ function AdminUsers() {
         setError("Failed to fetch users");
       }
     } catch (err) {
-      console.error("Error fetching users:", err);
       setError("An error occurred while fetching users");
     } finally {
       setLoading(false);
@@ -63,7 +62,6 @@ function AdminUsers() {
         setError("Failed to update user");
       }
     } catch (err) {
-      console.error("Error updating user:", err);
       setError("An error occurred while updating user");
     }
   };
@@ -86,7 +84,6 @@ function AdminUsers() {
         setError("Failed to delete user");
       }
     } catch (err) {
-      console.error("Error deleting user:", err);
       setError("An error occurred while deleting user");
     }
   };
