@@ -11,7 +11,7 @@
 Before deploying, make sure you have all required environment variables ready:
 
 ```
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/database
+MONGODB_URI=mongodb+srv://amer11:<db_password>@cluster0.kyvib3k.mongodb.net/?appName=Cluster0
 JWT_SECRET=your-super-secret-jwt-key-here
 CLOUDINARY_CLOUD_NAME=your-cloud-name
 CLOUDINARY_API_KEY=your-api-key

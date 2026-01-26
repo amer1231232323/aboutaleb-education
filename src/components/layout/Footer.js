@@ -41,8 +41,8 @@ export default function Footer() {
           <p>Istanbul, Turkey</p>
 
           <div className="social-media">
-            <a href="#" className="social-link" aria-label="Facebook"><FaFacebookF /></a>
-            <a href="#" className="social-link" aria-label="Instagram"><FaInstagram /></a>
+            <a href="https://www.facebook.com/share/1CPSbz1fS7/" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Facebook"><FaFacebookF /></a>
+            <a href="https://www.instagram.com/abou.taleb.education?igsh=OXdmM3ZibmNwZnRh" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Instagram"><FaInstagram /></a>
             <a href="#" className="social-link" aria-label="Twitter"><FaTwitter /></a>
             <a href="#" className="social-link" aria-label="LinkedIn"><FaLinkedinIn /></a>
           </div>

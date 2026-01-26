@@ -1,4 +1,3 @@
-
 import mongoose from 'mongoose';
 
 const UserSchema = new mongoose.Schema(
@@ -10,13 +9,15 @@ const UserSchema = new mongoose.Schema(
 
     email: {
       type: String,
-      required: true,
+      required: [true, 'Email is required'],
       unique: true,
+      lowercase: true,
+      trim: true,
     },
 
     password: {
       type: String,
-      required: true,
+      required: [true, 'Password is required'],
     },
 
     phone: {
@@ -30,8 +31,11 @@ const UserSchema = new mongoose.Schema(
       default: "student",
     },
   },
-  { timestamps: true }
+  { 
+    timestamps: true,
+    collection: 'users'
+  }
 );
 
-export default mongoose.models.User ||
-  mongoose.model("User", UserSchema);
+// Prevent model recompilation during hot reload
+export default mongoose.models.User || mongoose.model("User", UserSchema);

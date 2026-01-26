@@ -3,28 +3,95 @@ import mongoose from 'mongoose';
 const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
-  console.warn('⚠️ MONGODB_URI is not set. Database connections will fail at runtime.');
+  console.warn('⚠️ WARNING: MONGODB_URI is not set in environment variables.');
+  console.warn('Database connections will fail at runtime.');
 }
 
+/**
+ * Global cache for MongoDB connection
+ * Prevents multiple connections in serverless environments (Vercel)
+ */
 let cached = global.mongoose;
 
 if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
 }
 
+/**
+ * Connect to MongoDB with connection pooling and caching
+ * Safe for serverless environments like Vercel
+ * @returns {Promise<typeof mongoose>} Mongoose connection
+ */
 export async function connectDB() {
+  // Validate environment variable
   if (!MONGODB_URI) {
-    throw new Error('MONGODB_URI is not defined');
+    throw new Error(
+      'Please define the MONGODB_URI environment variable in .env.local or Vercel dashboard'
+    );
   }
 
-  if (cached.conn) return cached.conn;
+  // Return cached connection if available
+  if (cached.conn) {
+    return cached.conn;
+  }
 
+  // Create new connection if none exists
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI, {
+    const opts = {
       bufferCommands: false,
-    }).then((mongoose) => mongoose);
+      maxPoolSize: 10,
+      minPoolSize: 2,
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 45000,
+      family: 4,
+    };
+
+    cached.promise = mongoose
+      .connect(MONGODB_URI, opts)
+      .then((mongoose) => {
+        console.log('✅ MongoDB connected successfully');
+        return mongoose;
+      })
+      .catch((error) => {
+        cached.promise = null;
+        console.error('❌ MongoDB connection error:', error.message);
+        throw error;
+      });
   }
 
-  cached.conn = await cached.promise;
+  try {
+    cached.conn = await cached.promise;
+  } catch (error) {
+    cached.promise = null;
+    throw error;
+  }
+
   return cached.conn;
 }
+
+/**
+ * Disconnect from MongoDB (useful for testing)
+ */
+export async function disconnectDB() {
+  if (cached.conn) {
+    await mongoose.disconnect();
+    cached.conn = null;
+    cached.promise = null;
+    console.log('MongoDB disconnected');
+  }
+}
+
+/**
+ * Get connection status
+ */
+export function getConnectionStatus() {
+  const states = {
+    0: 'disconnected',
+    1: 'connected',
+    2: 'connecting',
+    3: 'disconnecting',
+  };
+  return states[mongoose.connection.readyState] || 'unknown';
+}
+
+export default connectDB;
