@@ -28,7 +28,14 @@ export default async function handler(req, res) {
   }
 
   try {
-    await connectDB();
+    const db = await connectDB();
+
+    if (!db) {
+      return res.status(503).json({
+        success: false,
+        message: "Database unavailable. Please try again later."
+      });
+    }
 
     // Check if email already exists
     const existingUser = await User.findOne({ email });

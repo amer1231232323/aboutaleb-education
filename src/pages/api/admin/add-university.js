@@ -1,52 +1,52 @@
 import { connectDB } from "@/lib/db";
-import { verifyAdminToken } from "@/lib/adminAuthCheck";
+import { withAdminAuth } from "@/lib/unifiedAuth";
 import University from "@/models/University";
+import { createSuccessResponse, createErrorResponse, sendResponse } from "@/lib/responseFormatter";
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ 
-      success: false,
-      message: "Method not allowed" 
-    });
+    return sendResponse(res, createErrorResponse(
+      "Method not allowed",
+      "METHOD_NOT_ALLOWED",
+      405
+    ));
   }
 
   try {
-    // Verify admin authentication
-    const token = req.headers.authorization?.split(" ")[1];
-    const admin = verifyAdminToken(token);
-
-    if (!admin) {
-      return res.status(403).json({ 
-        success: false,
-        message: "Unauthorized - Admin access required" 
-      });
-    }
-
     await connectDB();
 
-    const { name, country } = req.body;
+    const { name, country, city, type } = req.body;
 
     // Validate required fields
     if (!name) {
-      return res.status(400).json({ 
-        success: false,
-        message: "University name is required" 
-      });
+      return sendResponse(res, createErrorResponse(
+        "University name is required",
+        "VALIDATION_ERROR",
+        400
+      ));
     }
 
-    const uni = await University.create({ name, country });
+    const universityData = {
+      name,
+      city: city || country, // Use city if provided, otherwise use country for backward compatibility
+      type: type || "public"
+    };
 
-    return res.status(201).json({ 
-      success: true,
-      message: "University added successfully", 
-      data: uni 
-    });
+    const uni = await University.create(universityData);
+
+    return sendResponse(res, createSuccessResponse(
+      uni,
+      "University added successfully"
+    ), 201);
   } catch (error) {
     console.error("Add university error:", error);
-    return res.status(500).json({ 
-      success: false,
-      message: "Failed to add university",
-      error: process.env.NODE_ENV === 'development' ? error.message : undefined
-    });
+    return sendResponse(res, createErrorResponse(
+      "Failed to add university",
+      "CREATE_ERROR",
+      500,
+      process.env.NODE_ENV === 'development' ? error.message : null
+    ));
   }
 }
+
+export default withAdminAuth(handler);

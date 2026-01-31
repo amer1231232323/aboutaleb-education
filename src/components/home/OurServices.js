@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { FaGraduationCap, FaFileAlt, FaPassport, FaHome, FaBook, FaHandshake, FaPlane } from "react-icons/fa";
 
 const services = [
@@ -60,10 +61,12 @@ const services = [
 ];
 
 export default function OurServices() {
+    const { t } = useTranslation();
+
     return (
         <section className="our-services">
             <div className="container">
-                <h2 className="section-title">Our Services</h2>
+                <h2 className="section-title">{t('ourServices')}</h2>
 
                 <div className="services-grid">
                     {services.map((service) => {

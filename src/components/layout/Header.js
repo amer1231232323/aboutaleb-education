@@ -48,14 +48,26 @@ export default function Header() {
     return langLabels[i18n.language] || 'العربية';
   };
 
+  const toggleMenu = () => {
+    setOpen(!open);
+  };
+
+  const closeMenu = () => {
+    setOpen(false);
+  };
+
+  const handleNavClick = (e) => {
+    closeMenu();
+  };
+
   return (
     <header className="header">
       <div className="container header-content">
 
         {/* LOGO */}
         <Link href="/" className="logo">
-          <div className="logo-icon">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div className="logo-icon logo-container">
+            <svg width="100%" height="100%" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <circle cx="20" cy="20" r="18" stroke="currentColor" strokeWidth="2" />
               <path d="M20 10L20 30M15 20L25 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>
@@ -68,13 +80,14 @@ export default function Header() {
 
         {/* NAV */}
         <nav className={`nav ${open ? "open" : ""}`}>
-          <Link href="/" className={isActive("/") ? "active" : ""}>
+          <Link href="/" className={isActive("/") ? "active" : ""} onClick={handleNavClick}>
             {t('home')}
           </Link>
 
           <Link
             href="/services"
             className={isActive("/services") ? "active" : ""}
+            onClick={handleNavClick}
           >
             {t('services')}
           </Link>
@@ -82,6 +95,7 @@ export default function Header() {
           <Link
             href="/universities"
             className={isActive("/universities") ? "active" : ""}
+            onClick={handleNavClick}
           >
             {t('universities')}
           </Link>
@@ -89,6 +103,7 @@ export default function Header() {
           <Link
             href="/contact"
             className={isActive("/contact") ? "active" : ""}
+            onClick={handleNavClick}
           >
             {t('contact')}
           </Link>
@@ -142,12 +157,17 @@ export default function Header() {
         </div>
 
         {/* BURGER */}
-        <div className={`burger ${open ? "open" : ""}`} onClick={() => setOpen(!open)}>
+        <div className={`burger ${open ? "open" : ""}`} onClick={toggleMenu}>
           <span></span>
           <span></span>
           <span></span>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {open && (
+        <div className="nav-overlay active" onClick={closeMenu}></div>
+      )}
     </header>
   );
 }

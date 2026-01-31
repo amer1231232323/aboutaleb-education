@@ -2,18 +2,18 @@
    BUTTONS & INTERACTIVE ELEMENTS
    ============================================ */
 
-/* Button Base Styles */
+/* Button Base Styles - Responsive */
 .btn,
 button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: var(--spacing-8);
-    padding: 14px 28px;
+    gap: clamp(6px, 1.5vw, 8px);
+    padding: clamp(12px, 2.5vw, 14px) clamp(20px, 4vw, 28px);
     border: none;
     border-radius: var(--radius-lg);
     font-family: var(--font-family-body);
-    font-size: var(--font-size-base);
+    font-size: clamp(14px, 2.5vw, 16px);
     font-weight: var(--font-weight-semibold);
     cursor: pointer;
     text-decoration: none;
@@ -22,24 +22,27 @@ button {
     box-shadow: var(--shadow-md);
     -webkit-user-select: none;
     user-select: none;
+    min-height: 44px;
+    /* Touch target size */
+    position: relative;
+    overflow: hidden;
 }
 
-/* Primary Button - Yellow */
+/* Primary Button - Teal */
 .btn.primary,
 .btn-primary,
 button.primary {
-    background-color: var(--color-primary);
-    color: var(--color-black);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: var(--color-white);
     border: none;
-    box-shadow: 0 4px 12px rgba(244, 180, 0, 0.16);
+    box-shadow: 0 4px 14px rgba(13, 92, 99, 0.25);
 }
 
 .btn.primary:hover,
 .btn-primary:hover,
 button.primary:hover {
-    background-color: var(--color-primary-dark);
-    color: var(--color-black);
-    box-shadow: 0 6px 20px rgba(244, 180, 0, 0.4);
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+    box-shadow: 0 6px 20px rgba(13, 92, 99, 0.35);
     transform: translateY(-2px);
 }
 
@@ -47,24 +50,24 @@ button.primary:hover {
 .btn-primary:active,
 button.primary:active {
     transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(244, 180, 0, 0.3);
+    box-shadow: 0 2px 10px rgba(13, 92, 99, 0.3);
 }
 
-/* Secondary Button - Red */
+/* Secondary Button - Amber */
 .btn.secondary,
 .btn-secondary,
 button.secondary {
-    background-color: var(--color-secondary);
-    color: var(--color-white);
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+    color: var(--color-gray-900);
     border: none;
-    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.22);
+    box-shadow: 0 4px 12px rgba(201, 162, 39, 0.25);
 }
 
 .btn.secondary:hover,
 .btn-secondary:hover,
 button.secondary:hover {
-    background-color: var(--color-secondary-dark);
-    box-shadow: 0 6px 20px rgba(26, 155, 142, 0.4);
+    background: linear-gradient(135deg, var(--color-secondary-light) 0%, var(--color-secondary) 100%);
+    box-shadow: 0 6px 20px rgba(201, 162, 39, 0.35);
     transform: translateY(-2px);
 }
 
@@ -90,7 +93,7 @@ button.outline:hover {
     background-color: var(--color-primary);
     color: var(--color-white);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(244, 180, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(13, 92, 99, 0.2);
 }
 
 /* Success Button - Green */
@@ -145,27 +148,28 @@ button.whatsapp:hover {
     transform: translateY(-2px);
 }
 
-/* Button Sizes */
+/* Button Sizes - Responsive */
 .btn.small,
 .btn-sm,
 button.sm,
 button.small {
-    padding: var(--spacing-8) var(--spacing-16);
-    font-size: var(--font-size-sm);
+    padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 16px);
+    font-size: clamp(12px, 2vw, 14px);
+    min-height: 36px;
 }
 
 .btn-lg,
 button.lg {
-    padding: var(--spacing-16) var(--spacing-32);
-    font-size: var(--font-size-lg);
-    border-radius: var(--radius-xl);
+    padding: clamp(14px, 3vw, 16px) clamp(24px, 5vw, 32px);
+    font-size: clamp(16px, 3vw, 18px);
+    min-height: 52px;
 }
 
 .btn-xl,
 button.xl {
-    padding: var(--spacing-20) var(--spacing-40);
-    font-size: var(--font-size-xl);
-    border-radius: var(--radius-xl);
+    padding: clamp(16px, 3.5vw, 20px) clamp(32px, 6vw, 40px);
+    font-size: clamp(18px, 3.5vw, 20px);
+    min-height: 60px;
 }
 
 /* Full Width Button */
@@ -230,27 +234,28 @@ button.loading::after {
     }
 }
 
-/* Icon Button */
+/* Icon Button - Responsive */
 .btn-icon {
-    width: 44px;
-    height: 44px;
+    width: clamp(40px, 8vw, 44px);
+    height: clamp(40px, 8vw, 44px);
     padding: 0;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: auto;
 }
 
 .btn-icon.sm {
-    width: 36px;
-    height: 36px;
-    font-size: 16px;
+    width: clamp(32px, 6vw, 36px);
+    height: clamp(32px, 6vw, 36px);
+    font-size: clamp(14px, 2.5vw, 16px);
 }
 
 .btn-icon.lg {
-    width: 52px;
-    height: 52px;
-    font-size: 24px;
+    width: clamp(48px, 9vw, 52px);
+    height: clamp(48px, 9vw, 52px);
+    font-size: clamp(20px, 4vw, 24px);
 }
 
 /* Text Button */
@@ -319,7 +324,7 @@ button.loading::after {
     color: var(--color-gray-500);
 }
 
-/* Input Fields */
+/* Form Controls - Responsive */
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -330,9 +335,9 @@ textarea,
 select,
 .form-control {
     width: 100%;
-    padding: var(--spacing-12) var(--spacing-16);
+    padding: clamp(12px, 2.5vw, 14px) clamp(16px, 3vw, 20px);
     font-family: var(--font-family-primary);
-    font-size: var(--font-size-base);
+    font-size: clamp(14px, 2.5vw, 16px);
     line-height: var(--line-height-normal);
     color: var(--color-gray-900);
     background-color: var(--color-white);
@@ -340,6 +345,7 @@ select,
     border-radius: var(--radius-lg);
     transition: all var(--transition-base);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    min-height: 44px;
 }
 
 input[type="text"]:hover,
@@ -366,7 +372,7 @@ select:focus,
 .form-control:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1), 0 4px 12px rgba(37, 99, 235, 0.15);
+    box-shadow: 0 0 0 3px rgba(13, 92, 99, 0.12), 0 4px 12px rgba(13, 92, 99, 0.1);
 }
 
 input[type="text"]:disabled,
@@ -478,6 +484,7 @@ input[type="radio"] {
    CARDS
    ============================================ */
 
+/* Card - Responsive */
 .card {
     background-color: var(--color-white);
     border-radius: var(--radius-lg);
@@ -485,10 +492,11 @@ input[type="radio"] {
     overflow: hidden;
     transition: all var(--transition-base);
     box-shadow: var(--shadow-sm);
+    margin-bottom: clamp(16px, 3vw, 24px);
 }
 
 .card:hover {
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 12px 32px rgba(13, 92, 99, 0.1), var(--shadow-lg);
     transform: translateY(-4px);
     border-color: var(--color-primary);
 }
@@ -501,8 +509,9 @@ input[type="radio"] {
     box-shadow: var(--shadow-xl);
 }
 
+/* Card Header - Responsive */
 .card-header {
-    padding: var(--spacing-24);
+    padding: clamp(16px, 3vw, 24px);
     border-bottom: 1px solid var(--color-gray-200);
     background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
 }
@@ -510,10 +519,11 @@ input[type="radio"] {
 .card-header h3 {
     margin-bottom: 0;
     color: var(--color-gray-900);
+    font-size: clamp(16px, 3vw, 18px);
 }
 
 .card-body {
-    padding: var(--spacing-24);
+    padding: clamp(16px, 3vw, 24px);
 }
 
 .card-body> :last-child {
@@ -521,24 +531,31 @@ input[type="radio"] {
 }
 
 .card-footer {
-    padding: var(--spacing-24);
+    padding: clamp(16px, 3vw, 24px);
     border-top: 1px solid var(--color-gray-200);
     background-color: var(--color-gray-50);
     display: flex;
-    gap: var(--spacing-12);
+    gap: clamp(8px, 2vw, 12px);
+    flex-wrap: wrap;
 }
 
+/* Card Image - Responsive */
 .card-image {
     position: relative;
     overflow: hidden;
-    height: 250px;
+    height: clamp(180px, 25vw, 250px);
     background: linear-gradient(135deg, var(--color-gray-100) 0%, var(--color-gray-200) 100%);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     transition: transform var(--transition-base);
     margin: 0;
 }
@@ -862,17 +879,20 @@ table.striped tbody tr:nth-child(odd) {
 
     .btn,
     button {
-        padding: var(--spacing-10) var(--spacing-18);
-        font-size: var(--font-size-sm);
+        padding: clamp(10px, 2.5vw, 12px) clamp(16px, 4vw, 20px);
+        font-size: clamp(13px, 2.5vw, 15px);
+        min-height: 44px;
     }
 
     .btn-lg,
     button.lg {
-        padding: var(--spacing-12) var(--spacing-24);
+        padding: clamp(12px, 3vw, 14px) clamp(20px, 5vw, 24px);
+        font-size: clamp(14px, 3vw, 16px);
+        min-height: 48px;
     }
 
     .card {
-        margin-bottom: var(--spacing-16);
+        margin-bottom: clamp(12px, 3vw, 16px);
     }
 
     input[type="text"],
@@ -883,17 +903,8 @@ table.striped tbody tr:nth-child(odd) {
     .form-control {
         font-size: 16px;
         /* Prevents zoom on mobile */
-    }
-
-    table th,
-    table td {
-        padding: var(--spacing-12);
-        font-size: var(--font-size-xs);
-    }
-
-    .modal {
-        width: 95%;
-        max-height: 95vh;
+        padding: clamp(12px, 2.5vw, 14px) clamp(14px, 3vw, 18px);
+        min-height: 44px;
     }
 }
 
@@ -901,12 +912,14 @@ table.striped tbody tr:nth-child(odd) {
 
     .btn,
     button {
-        padding: var(--spacing-8) var(--spacing-16);
+        padding: clamp(10px, 2.5vw, 12px) clamp(14px, 4vw, 18px);
         width: 100%;
+        font-size: clamp(13px, 2.5vw, 15px);
     }
 
     .btn-group {
         flex-direction: column;
+        gap: clamp(8px, 2vw, 12px);
     }
 
     .btn-group .btn,
@@ -917,15 +930,16 @@ table.striped tbody tr:nth-child(odd) {
     .card-header,
     .card-body,
     .card-footer {
-        padding: var(--spacing-16);
+        padding: clamp(12px, 3vw, 16px);
     }
 
     .form-group {
-        margin-bottom: var(--spacing-16);
+        margin-bottom: clamp(12px, 3vw, 16px);
     }
 
     .modal-footer {
         flex-direction: column;
+        gap: clamp(8px, 2vw, 12px);
     }
 
     .modal-footer .btn,

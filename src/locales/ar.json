@@ -54,9 +54,6 @@
     "businessAdministration": "إدارة أعمال",
     "medicine": "طب",
     "pharmacy": "صيدلة",
-    "readyToStart": "جاهز للبدء؟",
-    "leaveRest": "اترك الباقي علينا",
-    "contactWhatsapp": "تواصل واتساب",
     "featuredUniversities": "الجامعات المميزة",
     "viewAll": "عرض الكل",
     "beykozUniversity": "جامعة بيكوز",
@@ -66,5 +63,10 @@
     "heroTitleSpan": "التركية يبدأ من هنا",
     "heroDescription": "قبولات سريعة، دعم دولي، وشراكات جامعية حصرية.",
     "contactViaWhatsapp": "تواصل عبر واتساب",
-    "studentsInTurkey": "طلاب في تركيا"
+    "studentsInTurkey": "طلاب في تركيا",
+    "whyStudyInTurkey": "لماذا تدرس في تركيا؟",
+    "ourServices": "خدماتنا",
+    "readyToStart": "جاهز للبدء؟",
+    "leaveRest": "اترك الباقي علينا",
+    "contactWhatsapp": "تواصل واتساب"
 }

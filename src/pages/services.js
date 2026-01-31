@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 import { FaGraduationCap, FaFileAlt, FaPassport, FaHome, FaBook, FaHandshake, FaPlane } from "react-icons/fa";
 
 const services = [
@@ -61,11 +62,13 @@ const services = [
 ];
 
 export default function ServicesPage() {
+    const { t } = useTranslation();
+
     return (
         <section className="services-page">
             <div className="container">
                 <div className="services-header">
-                    <h1 className="section-title">Our Services</h1>
+                    <h1 className="section-title">{t('services')}</h1>
                     <p className="services-subtitle">
                         Comprehensive support for your journey to study in Turkey. From admission to graduation, we&apos;re here to help every step of the way.
                     </p>
@@ -92,7 +95,7 @@ export default function ServicesPage() {
                                 </div>
 
                                 <Link href="/contact" className="btn primary small">
-                                    Get Started
+                                    {t('contactUs')}
                                 </Link>
                             </div>
                         );
@@ -101,14 +104,14 @@ export default function ServicesPage() {
 
                 <div className="services-cta">
                     <div className="cta-content">
-                        <h2>Ready to Start Your Journey?</h2>
-                        <p>Contact us today to begin your application process and get personalized guidance for studying in Turkey.</p>
+                        <h2>{t('readyToStart')}</h2>
+                        <p>{t('leaveRest')}</p>
                         <div className="cta-buttons">
                             <Link href="/student/register" className="btn primary">
-                                Apply Now
+                                {t('applyNow')}
                             </Link>
                             <Link href="/contact" className="btn secondary">
-                                Contact Us
+                                {t('contactUs')}
                             </Link>
                         </div>
                     </div>

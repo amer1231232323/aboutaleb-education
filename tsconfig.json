@@ -26,7 +26,13 @@
     "forceConsistentCasingInFileNames": true,
     "typeRoots": [
       "node_modules/@types"
-    ]
+    ],
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",

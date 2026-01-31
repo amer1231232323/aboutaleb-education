@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 /**
  * Higher-Order Component to protect admin routes
  * Checks for valid admin token and redirects unauthorized users
+ * Updated to use unified authentication system
  */
 export function withAdminAuth(Component) {
   return function ProtectedComponent(props) {
@@ -34,7 +35,7 @@ export function withAdminAuth(Component) {
             return;
           }
 
-          // Verify token with backend
+          // Verify token with backend using unified auth endpoint
           const response = await fetch("/api/admin/verify", {
             method: "POST",
             headers: {
@@ -43,7 +44,9 @@ export function withAdminAuth(Component) {
             },
           });
 
-          if (!response.ok) {
+          const result = await response.json();
+
+          if (!response.ok || !result.success) {
             localStorage.removeItem("token");
             localStorage.removeItem("user");
             router.push("/admin/login");

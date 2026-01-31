@@ -1,10 +1,13 @@
+import { useTranslation } from "react-i18next";
 import { FaGraduationCap, FaCity, FaDollarSign, FaLanguage } from "react-icons/fa";
 
 export default function WhyStudy() {
+    const { t } = useTranslation();
+
     return (
         <section className="why-study">
             <div className="container">
-                <h2 className="section-title">Why Study in Turkey?</h2>
+                <h2 className="section-title">{t('whyStudyInTurkey')}</h2>
 
                 <div className="why-grid">
                     <div className="why-card">

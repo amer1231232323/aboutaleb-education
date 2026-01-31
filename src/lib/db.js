@@ -25,9 +25,8 @@ if (!cached) {
 export async function connectDB() {
   // Validate environment variable
   if (!MONGODB_URI) {
-    throw new Error(
-      'Please define the MONGODB_URI environment variable in .env.local or Vercel dashboard'
-    );
+    console.log('🔌 Database disabled - MONGODB_URI not set');
+    return null;
   }
 
   // Return cached connection if available
@@ -55,7 +54,8 @@ export async function connectDB() {
       .catch((error) => {
         cached.promise = null;
         console.error('❌ MongoDB connection error:', error.message);
-        throw error;
+        console.log('🔌 Continuing without database connection...');
+        return null;
       });
   }
 
@@ -63,7 +63,8 @@ export async function connectDB() {
     cached.conn = await cached.promise;
   } catch (error) {
     cached.promise = null;
-    throw error;
+    console.log('🔌 Database connection failed, continuing without database...');
+    return null;
   }
 
   return cached.conn;

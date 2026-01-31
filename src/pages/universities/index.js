@@ -1,17 +1,10 @@
+import { useTranslation } from "react-i18next";
 import fs from 'fs';
 import path from 'path';
 import UniversityCard from "@/components/universities/UniversityCard";
+import { slugify } from "@/lib/utils";
 
-function slugify(name) {
-  let slug = name;
-  if (slug.endsWith(" ÜNİVERSİTESİ")) {
-    slug = slug.slice(0, -" ÜNİVERSİTESİ".length);
-  }
-  slug = slug.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ /g, "-");
-  return slug;
-}
-
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const logoDir = path.join(process.cwd(), 'public', 'logo');
   const files = fs.readdirSync(logoDir).filter(file => /\.(png|jpg|jpeg)$/i.test(file));
   const universities = files.map(file => {
@@ -30,10 +23,12 @@ export async function getStaticProps() {
 }
 
 export default function UniversitiesPage({ universities }) {
+  const { t } = useTranslation();
+
   return (
     <section className="universities">
       <div className="container">
-        <h1 className="section-title">Private Universities</h1>
+        <h1 className="section-title">{t('privateUniversities')}</h1>
 
         <div className="universities-grid">
           {universities.map((uni) => (

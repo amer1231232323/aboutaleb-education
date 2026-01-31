@@ -4,7 +4,7 @@
    ============================================ */
 
 /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap');
 
 /* ============================================
    STEP 1: BASE STYLES & DESIGN VARIABLES
@@ -20,7 +20,10 @@
    STEP 3: COMPONENT STYLES
    ============================================ */
 @import './components/buttons.css';
-@import './components/slider.css';
+@import './components/premium-slider.css';
+@import './components/hero-slider.css';
+@import './components/hero-content.css';
+@import './components/hero-section.css';
 
 /* ============================================
    STEP 4: PAGE SECTIONS
@@ -59,23 +62,23 @@ html {
 }
 
 body {
-   font-family: var(--font-family-body, 'Cairo', sans-serif);
+   font-family: var(--font-family-body);
    font-size: var(--font-size-base, 16px);
    font-weight: var(--font-weight-regular, 400);
    line-height: var(--line-height-normal, 1.5);
-   color: var(--gray-800, #1f2937);
-   background-color: var(--white, #ffffff);
+   color: var(--color-gray-800);
+   background-color: var(--color-gray-50);
    transition: background-color 250ms ease;
 }
 
 a {
-   color: var(--primary, #2563eb);
+   color: var(--color-primary);
    text-decoration: none;
    transition: color 250ms ease;
 }
 
 a:hover {
-   color: var(--primary-dark, #1d4ed8);
+   color: var(--color-primary-dark);
 }
 
 button,

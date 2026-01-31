@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
 export default function FeaturedUniversities() {
@@ -13,18 +12,22 @@ export default function FeaturedUniversities() {
                 <div className="universities-grid">
                     <div className="university-card">
                         <h3 className="university-name">{t('beykozUniversity')}</h3>
-                        <div className="university-logo">
-                            <Image src="/images/universities/u1.png" alt={t('beykozUniversity')} width={120} height={120} style={{ objectFit: 'contain' }} />
+                        <div className="university-logo logo-container">
+                            <img src={`/images/universities/u1.png`} alt={t('beykozUniversity')} style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }} />
                         </div>
-                        <span className="university-agent">{t('officialAgent')}</span>
+                        <Link href="/universities/beykoz" className="btn details-btn">
+                            {t('details')}
+                        </Link>
                     </div>
 
                     <div className="university-card">
                         <h3 className="university-name">{t('istanbulGelisimUniversity')}</h3>
-                        <div className="university-logo">
-                            <Image src="/images/universities/u2.png" alt={t('istanbulGelisimUniversity')} width={120} height={120} style={{ objectFit: 'contain' }} />
+                        <div className="university-logo logo-container">
+                            <img src={`/images/universities/u2.png`} alt={t('istanbulGelisimUniversity')} style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }} />
                         </div>
-                        <span className="university-agent">{t('officialAgent')}</span>
+                        <Link href="/universities/istanbul-gelisim" className="btn details-btn">
+                            {t('details')}
+                        </Link>
                     </div>
                 </div>
 

@@ -3,29 +3,31 @@
 ========================= */
 
 .universities {
-    background-color: var(--gray-50);
-    padding: var(--spacing-80) var(--spacing-24);
+    background-color: #ffffff;
+    padding: 80px 24px;
 }
 
 .section-title {
+    font-family: var(--font-family-heading);
     text-align: center;
     font-size: var(--font-size-4xl);
-    margin-bottom: var(--spacing-56);
-    color: var(--gray-900);
+    margin-bottom: 56px;
+    color: var(--color-primary-dark);
     position: relative;
     display: inline-block;
     left: 50%;
     transform: translateX(-50%);
+    letter-spacing: -0.02em;
 }
 
 .section-title::after {
     content: "";
     display: block;
-    width: 80px;
-    height: 5px;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-    margin: var(--spacing-24) auto 0;
-    border-radius: var(--radius-full);
+    width: 64px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    margin: 24px auto 0;
+    border-radius: 50px;
     animation: expandWidth 0.8s ease-out;
 }
 
@@ -41,7 +43,7 @@
 
 .universities-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: var(--spacing-32);
     max-width: 1400px;
     margin: 0 auto;
@@ -49,28 +51,27 @@
 
 /* UNIVERSITY CARD - FIXED LAYOUT */
 .university-card {
-    background: var(--white);
-    border-radius: var(--radius-2xl);
+    background: var(--color-white);
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: var(--shadow-md);
-    transition: all var(--transition-base);
-    
-    /* Flexbox vertical layout */
+    box-shadow: 0 4px 20px rgba(10, 61, 66, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--color-gray-200);
+    transition: all 0.3s ease;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    /* Sizing - REVERTED TO ORIGINAL */
-    min-height: 380px;
-    padding: var(--spacing-32);
-    
-    /* Remove any transforms */
+
+    min-height: 450px;
+    padding: 32px;
+
     transform: none;
 }
 
 .university-card:hover {
-    box-shadow: var(--shadow-xl);
-    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(13, 92, 99, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+    transform: translateY(-4px);
+    border-color: var(--color-primary);
 }
 
 /* University Name - Top of card, horizontal, centered */
@@ -80,10 +81,10 @@
     font-weight: 600;
     color: var(--gray-900);
     text-align: center;
-    margin-bottom: var(--spacing-24);
+    margin-bottom: calc(var(--spacing-24) - 3px);
     line-height: 1.4;
     width: 100%;
-    
+
     /* Remove any transforms */
     transform: none;
 }
@@ -94,15 +95,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    /* Larger size to accommodate 500px logo */
+
+    /* Responsive sizing - large for big cards */
     width: 100%;
-    height: 400px;
-    margin-bottom: var(--spacing-24);
-    
-    /* Remove absolute positioning */
-    position: relative;
-    
+    height: 240px;
+    min-height: 200px;
+    flex: 1;
+    margin: 0;
+
     /* Remove any transforms */
     transform: none;
 }
@@ -110,25 +110,34 @@
 .university-logo img {
     max-width: 100%;
     max-height: 100%;
-    width: auto;
-    height: auto;
     object-fit: contain;
+    object-position: center;
 }
 
 /* Details Button - Centered under logo */
-.university-card .btn {
-    /* Remove absolute positioning */
+.details-btn {
     position: relative;
-    
-    /* Center alignment */
     align-self: center;
-    
-    /* Spacing */
+
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 12px 32px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
     margin-top: auto;
-    padding: var(--spacing-12) var(--spacing-32);
-    
-    /* Remove any transforms */
     transform: none;
+    box-shadow: 0 4px 12px rgba(13, 92, 99, 0.2);
+}
+
+.details-btn:hover {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(13, 92, 99, 0.3);
 }
 
 /* Agent Label (if exists) */
@@ -190,8 +199,8 @@
 }
 
 .university-hero {
-    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
-    color: var(--white);
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary-dark) 100%);
+    color: var(--color-white);
     padding: var(--spacing-80) 0;
     text-align: center;
     position: relative;
@@ -211,9 +220,12 @@
 }
 
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-20px);
     }
@@ -225,9 +237,11 @@
 }
 
 .university-hero h1 {
+    font-family: var(--font-family-heading);
     font-size: var(--font-size-5xl);
     margin-bottom: var(--spacing-24);
-    color: var(--white);
+    color: var(--color-white);
+    letter-spacing: -0.02em;
 }
 
 .university-hero p {
@@ -306,12 +320,19 @@
     }
 
     .university-card {
-        min-height: 340px;
-        padding: var(--spacing-24);
+        min-height: 380px;
+        padding: 24px;
     }
 
     .university-logo {
-        height: 150px;
+        height: 180px;
+        min-height: 140px;
+        margin-bottom: 20px;
+    }
+
+    /* Keep university card logos visible (override base.css .logo-container max-height) */
+    .university-card .university-logo .logo-container {
+        max-height: none;
     }
 
     .university-hero {
@@ -348,7 +369,8 @@
     }
 
     .university-card {
-        min-height: 320px;
+        min-height: 360px;
+        padding: 20px;
     }
 
     .university-name {
@@ -356,7 +378,13 @@
     }
 
     .university-logo {
-        height: 120px;
+        height: 160px;
+        min-height: 120px;
+        margin-bottom: 16px;
+    }
+
+    .university-card .university-logo .logo-container {
+        max-height: none;
     }
 
     .university-hero h1 {
